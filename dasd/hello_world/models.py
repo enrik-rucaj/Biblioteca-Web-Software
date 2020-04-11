@@ -9,11 +9,11 @@ from django.db import models
 
 
 class Autori(models.Model):
-    idautore = models.TextField(db_column='IdAutore', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    idautore = models.TextField(primary_key=True,db_column='IdAutore', default=-1, null=False)  # Field name made lowercase. This field type is a guess.
     cognomenome = models.TextField(db_column='CognomeNome', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
 
     class Meta:
-        managed = False
+        verbose_name_plural="Autori"
         db_table = 'Autori'
 
 
@@ -22,17 +22,17 @@ class Autorilibri(models.Model):
     idautore = models.TextField(db_column='IdAutore', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
 
     class Meta:
-        managed = False
+        
         db_table = 'AutoriLibri'
 
 
 class Codicedewey(models.Model):
-    iddew = models.TextField(db_column='IdDew', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    iddew = models.TextField(db_column='IdDew', primary_key=True,default=0, null=False)  # Field name made lowercase. This field type is a guess.
     dew = models.TextField(db_column='Dew', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
     argomento = models.TextField(db_column='Argomento', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
 
     class Meta:
-        managed = False
+        
         db_table = 'CodiceDewey'
 
 
@@ -41,7 +41,7 @@ class Collocazione(models.Model):
     collocazione = models.TextField(db_column='Collocazione', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
 
     class Meta:
-        managed = False
+        
         db_table = 'Collocazione'
 
 
@@ -50,7 +50,7 @@ class Editori(models.Model):
     editore = models.TextField(db_column='Editore', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
 
     class Meta:
-        managed = False
+        
         db_table = 'Editori'
 
 
@@ -72,7 +72,7 @@ class Libri(models.Model):
     idstato = models.TextField(db_column='IdStato', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
 
     class Meta:
-        managed = False
+        
         db_table = 'Libri'
 
 
@@ -84,7 +84,7 @@ class Prestiti(models.Model):
     datarestituzione = models.TextField(db_column='dataRestituzione', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
 
     class Meta:
-        managed = False
+        
         db_table = 'Prestiti'
 
 
@@ -94,7 +94,7 @@ class Scarichi(models.Model):
     motivo = models.TextField(db_column='Motivo', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
 
     class Meta:
-        managed = False
+        
         db_table = 'Scarichi'
 
 
@@ -103,7 +103,7 @@ class Sede(models.Model):
     sede = models.TextField(db_column='Sede', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
 
     class Meta:
-        managed = False
+        
         db_table = 'Sede'
 
 
@@ -112,7 +112,7 @@ class Stato(models.Model):
     stato = models.TextField(db_column='Stato', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
 
     class Meta:
-        managed = False
+        
         db_table = 'Stato'
 
 
@@ -122,5 +122,5 @@ class Utenti(models.Model):
     classe = models.TextField(db_column='Classe', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
 
     class Meta:
-        managed = False
+        
         db_table = 'Utenti'
