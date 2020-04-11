@@ -9,7 +9,7 @@ from django.db import models
 
 
 class Autori(models.Model):
-    idautore = models.TextField(primary_key=True,db_column='IdAutore', default=-1, null=False)  # Field name made lowercase. This field type is a guess.
+    idautore = models.IntegerField(primary_key=True,db_column='IdAutore', default=-1, null=False)  # Field name made lowercase. This field type is a guess.
     cognomenome = models.TextField(db_column='CognomeNome', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
 
     class Meta:
@@ -18,8 +18,8 @@ class Autori(models.Model):
 
 
 class Autorilibri(models.Model):
-    idlibro = models.TextField(db_column='IdLibro', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
-    idautore = models.TextField(db_column='IdAutore', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    idlibro = models.TextField(db_column='IdLibro',primary_key=True , null=False)  # Field name made lowercase. This field type is a guess.
+    idautore = models.TextField(db_column='IdAutore', primary_key=True, null=False)  # Field name made lowercase. This field type is a guess.
 
     class Meta:
         
@@ -37,7 +37,7 @@ class Codicedewey(models.Model):
 
 
 class Collocazione(models.Model):
-    idcol = models.TextField(db_column='IdCol', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    idcol = models.TextField(db_column='IdCol', primary_key=True, null=False)  # Field name made lowercase. This field type is a guess.
     collocazione = models.TextField(db_column='Collocazione', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
 
     class Meta:
@@ -77,7 +77,7 @@ class Libri(models.Model):
 
 
 class Prestiti(models.Model):
-    idprestito = models.TextField(db_column='IdPrestito', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    idprestito = models.TextField(db_column='IdPrestito', primary_key=True, null=True)  # Field name made lowercase. This field type is a guess.
     idlibro = models.TextField(db_column='IdLibro', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
     idutente = models.TextField(db_column='IdUtente', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
     dataprelievo = models.TextField(db_column='dataPrelievo', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
@@ -89,7 +89,7 @@ class Prestiti(models.Model):
 
 
 class Scarichi(models.Model):
-    idlibro = models.TextField(db_column='IdLibro', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    idlibro = models.TextField(db_column='IdLibro',primary_key=True, null=False)  # Field name made lowercase. This field type is a guess.
     data = models.TextField(db_column='Data', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
     motivo = models.TextField(db_column='Motivo', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
 
@@ -99,7 +99,7 @@ class Scarichi(models.Model):
 
 
 class Sede(models.Model):
-    idsede = models.TextField(db_column='IdSede', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    idsede = models.TextField(db_column='IdSede', primary_key=True, null=False)  # Field name made lowercase. This field type is a guess.
     sede = models.TextField(db_column='Sede', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
 
     class Meta:
@@ -108,7 +108,7 @@ class Sede(models.Model):
 
 
 class Stato(models.Model):
-    idstato = models.TextField(db_column='IdStato', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    idstato = models.TextField(db_column='IdStato', primary_key=True, null=False)  # Field name made lowercase. This field type is a guess.
     stato = models.TextField(db_column='Stato', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
 
     class Meta:
@@ -117,7 +117,7 @@ class Stato(models.Model):
 
 
 class Utenti(models.Model):
-    idutente = models.TextField(db_column='IdUtente', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
+    idutente = models.TextField(db_column='IdUtente', primary_key=True, null=False)  # Field name made lowercase. This field type is a guess.
     cognomenome = models.TextField(db_column='CognomeNome', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
     classe = models.TextField(db_column='Classe', blank=True, null=True)  # Field name made lowercase. This field type is a guess.
 
