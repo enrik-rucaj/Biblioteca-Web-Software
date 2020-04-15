@@ -12,5 +12,5 @@ Non siate pigri, i procedimenti da fare per farvi funzionare il programma.
 7) creare le credenziali per l'admin con --> **python .\manage.py createsuperuser**
 8) runnare il server e vedere se tutto è a posto.
 
-Fatti sti passaggi la prima volta avrete il vostro progetto e ogni volta che qualcuno di noi condividerà del materiale basta sostituire soltanto
+Fatti sti passaggi la prima volta avrete il vostro progetto e ogni volta che qualcuno di noi condividerà del materiale basterà sostituire soltanto
 i file cambiati.
