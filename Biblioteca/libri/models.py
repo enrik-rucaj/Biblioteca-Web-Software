@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 
 class Autori(models.Model):
     idautore = models.AutoField(db_column='IdAutore', primary_key=True)
@@ -18,7 +18,7 @@ class Autorilibri(models.Model):
     idautore = models.ForeignKey('Autori', on_delete=models.CASCADE, db_column='IdAutore')
 
     class Meta:
-        
+        verbose_name_plural="Autorilibri"
         db_table = 'AutoriLibri'
 
 
@@ -29,7 +29,7 @@ class Codicedewey(models.Model):
     argomento = models.CharField(db_column='Argomento', max_length=250)
 
     class Meta:
-        
+        verbose_name_plural="CodiciDewey"
         db_table = 'CodiceDewey'
 
 
@@ -38,7 +38,7 @@ class Collocazione(models.Model):
     collocazione = models.CharField(db_column='Collocazione', max_length=250, primary_key=True)
 
     class Meta:
-        
+        verbose_name_plural="Collocazioni"
         db_table = 'Collocazione'
 
 
@@ -46,8 +46,10 @@ class Editori(models.Model):
     ideditore = models.AutoField(db_column='IdEditore', primary_key=True)
     editore = models.CharField(db_column='Editore', max_length=250)
     
+    def __str__(self): 
+        return self.editore
     class Meta:
-        
+        verbose_name_plural="Editori"
         db_table = 'Editori'
 
 
@@ -71,8 +73,12 @@ class Libri(models.Model):
     inprestito = models.BooleanField(db_column='InPrestito')
     idstato = models.DecimalField(max_digits=2, decimal_places=0, db_column='IdStato')
 
+    
+   
+    
+    
     class Meta:
-        
+        verbose_name_plural="Libri"
         db_table = 'Libri'
 
 
@@ -85,7 +91,7 @@ class Prestiti(models.Model):
     datarestituzione = models.DateTimeField(auto_now_add=False, db_column='dataRestituzione', blank=True, null=True)
 
     class Meta:
-        
+        verbose_name_plural="Prestiti"
         db_table = 'Prestiti'
 
 
@@ -95,7 +101,7 @@ class Scarichi(models.Model):
     motivo = models.CharField(db_column='Motivo', max_length=250)
 
     class Meta:
-        
+        verbose_name_plural="Scarichi"
         db_table = 'Scarichi'
 
 
@@ -104,7 +110,7 @@ class Sede(models.Model):
     sede = models.CharField(db_column='Sede', max_length=25)
 
     class Meta:
-        
+        verbose_name_plural="Sedi"
         db_table = 'Sede'
 
 
@@ -113,7 +119,7 @@ class Stato(models.Model):
     stato = models.CharField(db_column='Stato', max_length=25)
 
     class Meta:
-        
+        verbose_name_plural="Stati"
         db_table = 'Stato'
 
 
@@ -123,5 +129,6 @@ class Utenti(models.Model):
     classe = models.CharField(db_column='Classe', max_length=10)
 
     class Meta:
-        
+        verbose_name_plural="Utenti"
         db_table = 'Utenti'
+
