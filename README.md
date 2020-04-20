@@ -15,22 +15,18 @@ Non siate pigri, i procedimenti da fare per farvi funzionare il programma.
 Fatti sti passaggi la prima volta avrete il vostro progetto e ogni volta che qualcuno di noi condividerà del materiale basterà sostituire soltanto
 i file cambiati.
 
+#############################################################################################################################################
 
+Procedimento da fare per poter usare il progetto pubblicato da Jude.
 
-QUI Jude sono le 5:48 di mattina io sono riuscito a fare l'authentication ma solo per gli admin quindi ho implementato anche una lista che visualizza tutti i libri
-ora bisogna solo capire come fare le query, come creare dei nuovi oggetti libri nel database ho più o meno capito cercherò di implementare quello domani.
-Finora non ho visto niente sul come eliminare roba.
-Manca l'authentication per la gente normale per fare i prestiti e https://simpleisbetterthancomplex.com/tutorial/2018/01/18/how-to-implement-multiple-user-types-with-django.html 
-(credo che questo tutorial sia fatto apposta).
-Dovete installare pylint e modificare le preferences di vscode per python se no non funziona Libri.objects.all()
-Ho messo il logo dello Zuccante ma secondo me fa schifo troppo grosso 
-bootstrap non è poi così male.
-Cose da cambiare:
-1)togliere il signup come admin perchè se no non ha senso 
-2)boh
+1) entrare nella webenv (ambiente virtuale)
+2) fare il comando --> **pip install django-crispy-forms**
+3) copiare il contenuto dei seguenti file: 
+    *  In Biblioteca copiare il contenuto di settings.py - urls.py     -       e copiare l'intera cartella templates/
+    *  In libri copiare il contenuto di views.py - models.py
+4) runnare il server e vedere se tutto è a posto.
 
-non vi ho messo il mio database perchè ho inserito un po' di prove di libri chiamati Jude il magnifico solo che quando facevo il submit mi dava errore nel reverse url
-che è una cosa che non ho ancora capito
+#############################################################################################################################################
 
 Un'altra cosa è capire come fare più pagine perchè al momento la lista dei libri è tutta su una pagina
 Se non mi sveglio e non vi funziona mentite al prof, mentite spudoratamente, dite che siamo a buon punto. 
