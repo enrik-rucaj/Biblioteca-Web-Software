@@ -1,7 +1,7 @@
 from django.contrib import admin
 from libri.models import Libri, Autori, Autorilibri, Codicedewey, Collocazione, Editori, Scarichi, Sede, Stato, Utenti, Prestiti
 # Register your models here.
-admin.register(Libri)
+admin.site.register(Libri)
 admin.site.register(Autori)
 admin.site.register(Autorilibri)
 admin.site.register(Codicedewey)
