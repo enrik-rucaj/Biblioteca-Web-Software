@@ -68,5 +68,17 @@ def delete_view(request, idlibro):
         return HttpResponseRedirect("/")
 
     return render(request, "delete_view.html", context)
-    
+
+def search_view(request):
+    query = request.GET.get("search_box", None)
+    qs = Libri.objects.all()
+    if query is not None:
+        
+        qs = qs.filter(titolo__icontains=query)
+    context = {
+        "libri_list": qs,
+    }
+    template= 'libri/search.html'   
+    return render(request, template, context)
+
     
