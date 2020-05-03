@@ -16,19 +16,22 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+
+from Biblioteca import settings
 from libri.models import Editori
 from libri import views
-from libri.views import LibriListView, LibriCreateView,SearchListView
-from libri.views import update_view, detail_view, delete_view
+from libri.views import LibriListView, LibriCreateView, SearchListView
+from libri.views import update_view, detail_view, delete_view, signup
+
 urlpatterns = [
     path('', SearchListView.as_view(), name='home'),
-    path('signup/', views.signup, name='signup'),
+    path('signup/', signup, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('secret/', views.LibriListView.as_view(), name='libri'),
+    path('secret/', LibriListView.as_view(), name='libri'),
     path('admin/', admin.site.urls),
     path('aggiungi/', LibriCreateView.as_view(),name='aggiungi' ),
-    path('<idlibro>/', detail_view, name= 'libro'),
-    path('<idlibro>/update', update_view, name= 'aggiorna'),
-    path('<idlibro>/delete', delete_view, name='cancella'),
-    path('secret/search/', SearchListView.as_view(), name = 'cerca'),
-]
+    path('<int:idlibro>/', detail_view, name= 'libro'),
+    path('<int:idlibro>/update', update_view, name= 'aggiorna'),
+    path('<int:idlibro>/delete', delete_view, name='cancella'),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

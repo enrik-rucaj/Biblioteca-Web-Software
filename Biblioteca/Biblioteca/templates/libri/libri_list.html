@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Lista dei libri 
-  <a class="btn btn-primary" href="{% url 'cerca' %}" role="button">Link</a>
-  </h1>
+  <h1>Lista dei libri </h1>
   <ul class="list-group">
     {% for libri in libri_list %}
       
