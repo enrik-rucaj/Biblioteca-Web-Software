@@ -10,17 +10,29 @@ from .forms import LibriForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
-#def signup(request):
-#    if request.method == 'POST':
-#        form=UserCreationForm(request.POST)
-#        if form.is_valid():
-#            form.save()
-#            return redirect('home')
-#    else:
-#        form=UserCreationForm()
-#    return render(request, 'registration/signup.html', {   
-#        'form' : form
-#    })
+def signup(request):
+    if request.method == 'POST':
+        form=UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form=UserCreationForm()
+    return render(request, 'registration/signup.html', {   
+        'form' : form
+    })
+
+def book_view(request, idlibro):
+    context = {}
+    obj = get_object_or_404(Libri, idlibro = idlibro)
+    form = LibriForm(request.POST or None, instance = obj)
+
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect("/"+idlibro)
+
+    context["form"] = form
+    return render(request, "prenotazioni.html", context)
 
 class LibriListView(LoginRequiredMixin, ListView):
     queryset = Libri.objects.all()

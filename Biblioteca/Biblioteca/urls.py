@@ -22,7 +22,7 @@ from Biblioteca import settings
 from libri.models import Editori
 from libri import views
 from libri.views import LibriListView, LibriCreateView, SearchListView
-from libri.views import update_view, detail_view, delete_view, signup
+from libri.views import update_view, detail_view, delete_view, signup, book_view
 
 urlpatterns = [
     path('', SearchListView.as_view(), name='home'),
@@ -34,4 +34,5 @@ urlpatterns = [
     path('<int:idlibro>/', detail_view, name= 'libro'),
     path('<int:idlibro>/update', update_view, name= 'aggiorna'),
     path('<int:idlibro>/delete', delete_view, name='cancella'),
+    path('<int:idlibro>/prenota', book_view, name='prenota'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
