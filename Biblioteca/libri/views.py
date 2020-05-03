@@ -68,17 +68,10 @@ def delete_view(request, idlibro):
         return HttpResponseRedirect("/")
 
     return render(request, "delete_view.html", context)
+class SearchListView(ListView):
+    paginate_by = 25
+    model = Libri
+    template_name = 'home.html'
 
-def search_view(request):
-    query = request.GET.get("search_box", None)
-    qs = Libri.objects.all()
-    if query is not None:
-        
-        qs = qs.filter(titolo__icontains=query)
-    context = {
-        "libri_list": qs,
-    }
-    template= 'libri/search.html'   
-    return render(request, template, context)
-
-    
+    def get_queryset(self):
+        return Libri.objects.filter(titolo__icontains=self.request.GET.get("search_box", ""))

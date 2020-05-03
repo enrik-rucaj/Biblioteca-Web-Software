@@ -18,17 +18,17 @@ from django.contrib import admin
 from django.urls import path, include
 from libri.models import Editori
 from libri import views
-from libri.views import LibriListView, LibriCreateView
-from libri.views import update_view, detail_view, delete_view, search_view
+from libri.views import LibriListView, LibriCreateView,SearchListView
+from libri.views import update_view, detail_view, delete_view
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', SearchListView.as_view(), name='home'),
     path('signup/', views.signup, name='signup'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('secret/', views.LibriListView.as_view(), name='libri'),
     path('admin/', admin.site.urls),
     path('aggiungi/', LibriCreateView.as_view(),name='aggiungi' ),
-    path('<idlibro>/', detail_view , name= 'libro'),
+    path('<idlibro>/', detail_view, name= 'libro'),
     path('<idlibro>/update', update_view, name= 'aggiorna'),
     path('<idlibro>/delete', delete_view, name='cancella'),
-    path('secret/search/', search_view, name = 'cerca'),
+    path('secret/search/', SearchListView.as_view(), name = 'cerca'),
 ]

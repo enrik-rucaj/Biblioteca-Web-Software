@@ -1,6 +1,9 @@
 from django.db import models
 from django.urls import reverse
-
+from django.contrib.auth.models import AbstractUser
+class User(AbstractUser):
+    is_admin=models.BooleanField(default=False)
+    is_not_admin=models.BooleanField(default=False)
 class Autori(models.Model):
     idautore = models.AutoField(db_column='IdAutore', primary_key=True)
     cognomenome = models.CharField(db_column='CognomeNome', max_length=60)
