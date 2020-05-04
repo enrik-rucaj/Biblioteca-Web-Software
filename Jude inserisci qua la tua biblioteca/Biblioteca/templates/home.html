@@ -4,7 +4,7 @@
     <p>Benvenuto alla Biblioteca Zuccante, {% if user.is_authenticated %}{{ user.username }}{% else %}visitor {% endif %} 
     <nav class="navbar navbar-light bg-light">
     <form  class="form-inline" method='GET' action="." style="margin: 0">
-    <button class="btn btn-outline-primary"></button>
+    
     <input  class="form-control mr-sm-2" id="search_box" type="text" name="search_box"  placeholder="Search..." >
     <button class="btn btn-outline-success my-2 my-sm-0" id="search_submit" type="submit" >Submit</button>
     </nav>
