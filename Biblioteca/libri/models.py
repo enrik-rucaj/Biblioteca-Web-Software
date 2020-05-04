@@ -71,9 +71,6 @@ class Libri(models.Model):
     def __str__(self):
         return self.titolo
     
-   
-    
-    
     class Meta:
         verbose_name_plural="Libri"
         db_table = 'Libri'
@@ -83,7 +80,7 @@ class Prestiti(models.Model):
     idprestito = models.AutoField(db_column='IdPrestito', primary_key=True)
     idlibro = models.ForeignKey('Libri', on_delete=models.CASCADE, db_column='IdLibro')
     idutente = models.ForeignKey('Utenti', on_delete=models.CASCADE, db_column='IdUtente')
-    dataprelievo = models.DateTimeField(auto_now_add=False, db_column='dataPrelievo')
+    dataprelievo = models.DateTimeField(auto_now_add=True, db_column='dataPrelievo')
     datarestituzione = models.DateTimeField(auto_now_add=False, db_column='dataRestituzione', blank=True, null=True)
 
     class Meta:
@@ -123,6 +120,9 @@ class Utenti(models.Model):
     idutente = models.AutoField(db_column='IdUtente', primary_key=True)
     cognomenome = models.CharField(db_column='CognomeNome', max_length=60)
     classe = models.CharField(db_column='Classe', max_length=10)
+
+    def __str__(self):
+        return self.cognomenome
 
     class Meta:
         verbose_name_plural="Utenti"

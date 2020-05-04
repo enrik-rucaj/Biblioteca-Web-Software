@@ -2,24 +2,28 @@ from django.shortcuts import render, redirect,get_object_or_404,HttpResponseRedi
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Libri, Autori, Editori
+from django.urls import reverse_lazy
+from .models import Libri, Autori, Editori, Prestiti, Utenti
 from django.views.generic import ListView, CreateView, DetailView, UpdateView
 from django.core.paginator import Paginator
 
-from .forms import LibriForm
+from .forms import LibriForm, PrestitiForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 # Create your views here.
-def book_view(request, idlibro):
-    context = {}
-    obj = get_object_or_404(Libri, idlibro = idlibro)
-    form = LibriForm(request.POST or None, instance = obj)
 
-    if form.is_valid():
-        form.save()
-        return HttpResponseRedirect("/"+str(idlibro))
+class PrestitiCreateView(LoginRequiredMixin, CreateView):
+    model = Prestiti
+    form_class = PrestitiForm
+    template_name = 'prenotazioni.html'
 
-    context["form"] = form
-    return render(request, "prenotazioni.html", context)
+    def get_initial(self):
+        initial = super().get_initial()
+        initial['idlibro'] = get_object_or_404(Libri, idlibro = self.kwargs['idlibro'])
+        return initial
+
+    def get_success_url(self):
+        return reverse_lazy('libro', kwargs={'idlibro': self.object.idlibro.idlibro})
 
 def signup(request):
    if request.method == 'POST':
@@ -41,8 +45,6 @@ class LibriCreateView(LoginRequiredMixin, CreateView):
     model = Libri
     form_class = LibriForm
     #fields = ['dewey','titolo','isbn','idedi','nedizione','annopubblicazione','prezzo','dataacquisto','descrizione','pagine','idcollocazione','idsede','inprestito','idstato']
-    success_url = "/"
-
     
 def detail_view(request, idlibro):
     data = Libri.objects.get(idlibro = idlibro)

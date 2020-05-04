@@ -1,5 +1,5 @@
 from django import forms 
-from .models import Libri
+from .models import Libri, Prestiti
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
@@ -21,3 +21,15 @@ class LibriForm(forms.ModelForm):
 		self.helper.form_method = 'post'
 		self.helper.add_input(Submit('submit', 'Aggiungi libro'))
 	
+class PrestitiForm(forms.ModelForm):
+	class Meta:
+		model = Prestiti
+		fields = [
+			"idlibro",
+			"idutente",
+		]
+
+class LibroInPrestito(forms.ModelForm):
+	class Meta:
+		model = Libri
+		fields = ['inprestito']
