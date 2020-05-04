@@ -2,11 +2,11 @@ from django.shortcuts import render, redirect,get_object_or_404,HttpResponseRedi
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .models import Libri, Autori, Editori
+from .models import Libri, Autori, Editori, Prestiti
 from django.views.generic import ListView, CreateView
 from django.core.paginator import Paginator
 
-from .forms import LibriForm
+from .forms import LibriForm, PrenotaLibroForm, PrestitoLibroForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
@@ -25,13 +25,18 @@ def signup(request):
 def book_view(request, idlibro):
     context = {}
     obj = get_object_or_404(Libri, idlibro = idlibro)
-    form = LibriForm(request.POST or None, instance = obj)
+    #form1 = PrenotaLibroForm(request.POST or None, instance = obj, initial={ "inprestito" : "true" })
+    form2 = PrestitoLibroForm(request.POST or None, instance = obj)
 
-    if form.is_valid():
-        form.save()
-        return HttpResponseRedirect("/"+idlibro)
+    if form2.is_valid():
+        #form1.save()
+        form2.save()
+        #form1 = PrenotaLibroForm()
+        form2 = PrestitoLibroForm()
+        return HttpResponseRedirect("/"+str(idlibro))
 
-    context["form"] = form
+    #context["form1"] = form1
+    context["form2"] = form2
     return render(request, "prenotazioni.html", context)
 
 class LibriListView(LoginRequiredMixin, ListView):

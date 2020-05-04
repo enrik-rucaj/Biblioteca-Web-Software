@@ -71,9 +71,6 @@ class Libri(models.Model):
     def __str__(self):
         return self.titolo
     
-   
-    
-    
     class Meta:
         verbose_name_plural="Libri"
         db_table = 'Libri'
@@ -123,6 +120,9 @@ class Utenti(models.Model):
     idutente = models.AutoField(db_column='IdUtente', primary_key=True)
     cognomenome = models.CharField(db_column='CognomeNome', max_length=60)
     classe = models.CharField(db_column='Classe', max_length=10)
+
+    def __str__(self):
+        return self.cognomenome
 
     class Meta:
         verbose_name_plural="Utenti"
