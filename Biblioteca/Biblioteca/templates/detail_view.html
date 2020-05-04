@@ -1,3 +1,5 @@
+
+
 {% extends "base.html" %}
 
 {% block content %}
@@ -14,10 +16,6 @@
   <p><strong>In Prestito:</strong> {{ data.inprestito }}</p>
   
   <hr class="my-4">
-  <a role="button" class="btn btn-secondary" href="{% url 'prenota' data.idlibro %}">Prenota</a>
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button type="button" class="btn btn-secondary">Modifica</button>
-    <button type="button" class="btn btn-secondary">Elimina</button>
-  </div> 
-  
+  <a class="btn btn-secondary" href="{% url 'prenota' data.idlibro %}" role="button">Prenota</a>
+  <a class="btn btn-secondary" href="{% url 'cancella' data.idlibro %}" role="button">Rimuovi</a>
 {% endblock %}
