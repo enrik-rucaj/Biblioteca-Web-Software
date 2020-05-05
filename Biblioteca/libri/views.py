@@ -43,8 +43,8 @@ class LibriListView(LoginRequiredMixin, ListView):
 
 class LibriCreateView(LoginRequiredMixin, CreateView):
     model = Libri
-    form_class = LibriForm
-    #fields = ['dewey','titolo','isbn','idedi','nedizione','annopubblicazione','prezzo','dataacquisto','descrizione','pagine','idcollocazione','idsede','inprestito','idstato']
+    #form_class = LibriForm
+    fields = ['dewey','titolo','isbn','idedi','nedizione','annopubblicazione','prezzo','dataacquisto','descrizione','pagine','idcollocazione','idsede','inprestito','idstato']
     
 def detail_view(request, idlibro):
     data = Libri.objects.get(idlibro = idlibro)

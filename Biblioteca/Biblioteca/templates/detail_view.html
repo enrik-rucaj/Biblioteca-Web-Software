@@ -15,7 +15,9 @@
   <p><strong>Prezzo:</strong> {{ data.prezzo }}</p>
   <p><strong>In Prestito:</strong> {{ data.inprestito }}</p>
   
-  <hr class="my-4">
-  <a class="btn btn-secondary" href="{% url 'prenota' data.idlibro %}" role="button">Prenota</a>
-  <a class="btn btn-secondary" href="{% url 'cancella' data.idlibro %}" role="button">Rimuovi</a>
+  {% if user.is_authenticated %}
+    <hr class="my-4">
+    <a class="btn btn-secondary" href="{% url 'prenota' data.idlibro %}" role="button">Prenota</a>
+    <a class="btn btn-secondary" href="{% url 'cancella' data.idlibro %}" role="button">Rimuovi</a>
+  {% endif %}
 {% endblock %}
