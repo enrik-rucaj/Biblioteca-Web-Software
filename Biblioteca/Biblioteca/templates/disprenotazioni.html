@@ -5,8 +5,7 @@
         <form method="POST"> 
             {% csrf_token %} 
             {{ form1.as_p }}
-            {{ form2.idlibro }}
-            {{ form2.idutente }} 
+            {{ form2.as_p }} 
             <input type="submit" value="Update"> 
         </form> 
     </div> 

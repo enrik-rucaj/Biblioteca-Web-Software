@@ -4,10 +4,9 @@
     <div class="main"> 
         <form method="POST"> 
             {% csrf_token %} 
-            {{ form1.as_p }}
-            {{ form2.idlibro }}
-            {{ form2.idutente }} 
-            <input type="submit" value="Update"> 
+            Are you sure to delete this item ? 
+            <input type="submit" value="Yes" /> 
+            <a href="/">Cancel </a> 
         </form> 
     </div> 
 {% endblock %}

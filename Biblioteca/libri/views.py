@@ -1,41 +1,57 @@
-from django.shortcuts import render, redirect,get_object_or_404,HttpResponseRedirect
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 from django.urls import reverse_lazy
-from .models import Libri, Autori, Editori, Prestiti, Utenti
-from django.views.generic import ListView, CreateView, DetailView, UpdateView
-from django.core.paginator import Paginator
-
-from .forms import LibriForm, PrestitiForm
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+
+from .models import Libri, Autori, Editori, Prestiti, Utenti
+from .forms import LibriForm, ApriPrestitiForm, ChiudiPrestitiForm, LibroInPrestitoForm
 
 # Create your views here.
+class ApriPrestitiCreateView(LoginRequiredMixin, CreateView):
+    def get(self, request, *args, **kwargs):
+        obj = Libri.objects.get(idlibro = self.kwargs['idlibro'])
+        form1 = LibroInPrestitoForm(instance = obj, initial = {'inprestito': True})
+        form2 = ApriPrestitiForm(initial = {'idlibro': obj})
 
-class PrestitiCreateView(LoginRequiredMixin, CreateView):
-    model = Prestiti
-    form_class = PrestitiForm
-    template_name = 'prenotazioni.html'
+        context = {'form1': form1, 'form2': form2}
+        return render(request, 'prenotazioni.html', context)
 
-    def get_initial(self):
-        initial = super().get_initial()
-        initial['idlibro'] = get_object_or_404(Libri, idlibro = self.kwargs['idlibro'])
-        return initial
+    def post(self, request, *args, **kwargs):
+        obj = Libri.objects.get(idlibro = self.kwargs['idlibro'])
+        form1 = LibroInPrestitoForm(request.POST, instance = obj, initial = {'inprestito': True})
+        form2 = ApriPrestitiForm(request.POST, initial = {'idlibro': obj})
+        if form1.is_valid() and form2.is_valid():
+            book1 = form1.save()
+            book2 = form2.save()
+            book1.save()
+            book2.save()
+            return HttpResponseRedirect(reverse_lazy('libro', kwargs={'idlibro': self.kwargs['idlibro']}))
+        return render(request, 'prenotazioni.html', {'form1': form1, 'form2': form2})
 
-    def get_success_url(self):
-        return reverse_lazy('libro', kwargs={'idlibro': self.object.idlibro.idlibro})
+class ChiudiPrestitiCreateView(LoginRequiredMixin, UpdateView):
+    def get(self, request, *args, **kwargs):
+        obj = Libri.objects.get(idlibro = self.kwargs['idlibro'])
+        obj2 = Prestiti.objects.get(idlibro = obj, datarestituzione = None)
+        form1 = LibroInPrestitoForm(instance = obj, initial = {'inprestito': False})
+        form2 = ChiudiPrestitiForm(instance = obj2, initial = {'datarestituzione': timezone.now()})
 
-def signup(request):
-   if request.method == 'POST':
-       form=UserCreationForm(request.POST)
-       if form.is_valid():
-           form.save()
-           return redirect('home')
-   else:
-       form=UserCreationForm()
-   return render(request, 'registration/signup.html', {   
-       'form' : form
-   })
+        context = {'form1': form1, 'form2': form2}
+        return render(request, 'disprenotazioni.html', context)
+
+    def post(self, request, *args, **kwargs):
+        obj = Libri.objects.get(idlibro = self.kwargs['idlibro'])
+        obj2 = Prestiti.objects.get(idlibro = obj, datarestituzione = None)
+        form1 = LibroInPrestitoForm(request.POST, instance = obj, initial = {'inprestito': False})
+        form2 = ChiudiPrestitiForm(request.POST, instance = obj2)
+        if form1.is_valid() and form2.is_valid():
+            book1 = form1.save()
+            book2 = form2.save()
+            book1.save()
+            book2.save()
+            return HttpResponseRedirect(reverse_lazy('libro', kwargs={'idlibro': self.kwargs['idlibro']}))
+        return render(request, 'disprenotazioni.html', {'form1': form1, 'form2': form2})
 
 class LibriListView(LoginRequiredMixin, ListView):
     queryset = Libri.objects.all()
@@ -43,42 +59,46 @@ class LibriListView(LoginRequiredMixin, ListView):
 
 class LibriCreateView(LoginRequiredMixin, CreateView):
     model = Libri
-    #form_class = LibriForm
-    fields = ['dewey','titolo','isbn','idedi','nedizione','annopubblicazione','prezzo','dataacquisto','descrizione','pagine','idcollocazione','idsede','inprestito','idstato']
+    form_class = LibriForm
+    template_name = 'libri/libri_create_form.html'
+
+    def get_success_url(self):
+        return reverse_lazy('libro', kwargs={'idlibro': Libri.objects.latest('idlibro').idlibro})
     
-def detail_view(request, idlibro):
-    data = Libri.objects.get(idlibro = idlibro)
-    context = {
-        'data' : data
-    }
-    return render(request, "detail_view.html", context)
+class LibriUpdateView(LoginRequiredMixin, UpdateView):
+    model = Libri
+    form_class = LibriForm
+    template_name = 'libri/libri_update_form.html'
 
-@login_required
-def update_view(request, idlibro):
+    def get_success_url(self):
+        return reverse_lazy('libro', kwargs={'idlibro': self.kwargs['idlibro']})
+
+    def get_object(self):
+        idlibro = self.kwargs.get("idlibro")
+        return get_object_or_404(Libri, idlibro = idlibro)
+
+class LibriDeleteView(LoginRequiredMixin, DeleteView):
+    model = Libri
+    template_name = 'libri/libri_delete_form.html'
+    success_url = reverse_lazy('home')
+
+    def get_object(self):
+        idlibro = self.kwargs.get("idlibro")
+        return get_object_or_404(Libri, idlibro = idlibro)
+
+class LibriDetailView(DetailView):
+    model = Libri
+    template_name = 'libri/libri_detail_form.html'
     
-    context = {}
-    obj = get_object_or_404(Libri, idlibro = idlibro)
-    form = LibriForm(request.POST or None, instance = obj)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['data'] = Libri.objects.get(idlibro = self.kwargs.get("idlibro"))
+        return context
 
-    if form.is_valid():
-        form.save()
-        return HttpResponseRedirect("/"+str(idlibro))
+    def get_object(self):
+        idlibro = self.kwargs.get("idlibro")
+        return get_object_or_404(Libri, idlibro = idlibro)
 
-    context["form"] = form   
-
-    return render(request, "update_view.html", context)
-@login_required
-def delete_view(request, idlibro):
-
-    context = {}
-
-    obj = get_object_or_404(Libri, idlibro = idlibro)
-
-    if request.method == "POST":
-        obj.delete()
-        return HttpResponseRedirect("/")
-
-    return render(request, "delete_view.html", context)
 class SearchListView(ListView):
     paginate_by = 25
     model = Libri

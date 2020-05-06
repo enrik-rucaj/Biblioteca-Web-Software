@@ -5,6 +5,9 @@ class Autori(models.Model):
     idautore = models.AutoField(db_column='IdAutore', primary_key=True)
     cognomenome = models.CharField(db_column='CognomeNome', max_length=60)
 
+    def __str__(self):
+        return self.cognomenome
+
     class Meta:
         verbose_name_plural="Autori"
         db_table = 'Autori'
@@ -24,7 +27,9 @@ class Codicedewey(models.Model):
     iddew = models.AutoField(db_column='IdDew', primary_key=True)
     dew = models.DecimalField(max_digits=3, decimal_places=0, db_column='Dew')
     argomento = models.CharField(db_column='Argomento', max_length=250)
-     
+
+    def __str__(self):
+        return self.dew 
      
     class Meta:
         verbose_name_plural="CodiciDewey"
@@ -33,6 +38,9 @@ class Codicedewey(models.Model):
 
 class Collocazione(models.Model):
     collocazione = models.CharField(db_column='Collocazione', max_length=250, primary_key=True)
+
+    def __str__(self):
+        return self.collocazione
 
     class Meta:
         verbose_name_plural="Collocazioni"
@@ -45,6 +53,7 @@ class Editori(models.Model):
     
     def __str__(self): 
         return self.editore
+
     class Meta:
         verbose_name_plural="Editori"
         db_table = 'Editori'
@@ -54,7 +63,7 @@ class Libri(models.Model):
     idlibro = models.AutoField(db_column='IdLibro', primary_key=True)
     dewey = models.CharField(db_column='Dewey', max_length=25)
     titolo = models.CharField(db_column='Titolo', max_length=250)
-    immagine = models.ImageField(db_column='Immagine', blank=True, null=True)
+    immagine = models.ImageField(upload_to='images_libri/', db_column='Immagine', blank=True, null=True)
     isbn = models.CharField(db_column='Isbn', max_length=13, blank=True, null=True)
     idedi = models.ForeignKey('Editori', on_delete=models.CASCADE, db_column='IdEdi')
     nedizione = models.PositiveIntegerField(db_column='Nedizione', blank=True, null=True)
@@ -65,7 +74,7 @@ class Libri(models.Model):
     pagine = models.DecimalField(max_digits=6, decimal_places=0, blank=True, null=True)
     idcollocazione = models.ForeignKey('Collocazione', on_delete=models.SET_DEFAULT, default='[Vuoto]', db_column='IdCollocazione')
     idsede = models.ForeignKey('Sede', on_delete=models.CASCADE, db_column='IdSede')
-    inprestito = models.BooleanField(db_column='InPrestito')
+    inprestito = models.BooleanField(db_column='InPrestito', default=False)
     idstato = models.DecimalField(max_digits=2, decimal_places=0, db_column='IdStato')
 
     def __str__(self):
@@ -102,6 +111,9 @@ class Sede(models.Model):
     idsede = models.AutoField(db_column='IdSede', primary_key=True)
     sede = models.CharField(db_column='Sede', max_length=25)
 
+    def __str__(self):
+        return self.sede
+
     class Meta:
         verbose_name_plural="Sedi"
         db_table = 'Sede'
@@ -110,6 +122,9 @@ class Sede(models.Model):
 class Stato(models.Model):
     idstato = models.AutoField(db_column='IdStato', primary_key=True)
     stato = models.CharField(db_column='Stato', max_length=25)
+
+    def __str__(self):
+        return str(self.idstato) + self.stato
 
     class Meta:
         verbose_name_plural="Stati"

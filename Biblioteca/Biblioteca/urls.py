@@ -19,19 +19,19 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from Biblioteca import settings
 from libri.models import Editori
-from libri import views
-from libri.views import LibriListView, LibriCreateView, SearchListView, PrestitiCreateView
-from libri.views import update_view, delete_view, detail_view
+from libri.views import (LibriListView, LibriCreateView, LibriUpdateView, LibriDeleteView, LibriDetailView, 
+                        SearchListView, ApriPrestitiCreateView, ChiudiPrestitiCreateView)
+
 urlpatterns = [
-    path('', SearchListView.as_view(), name='home'),
-    path('signup/', views.signup, name='signup'),
+    path('', SearchListView.as_view(), name = 'home'),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('secret/', views.LibriListView.as_view(), name='libri'),
+    path('secret/', LibriListView.as_view(), name = 'libri'),
     path('admin/', admin.site.urls),
-    path('aggiungi/', LibriCreateView.as_view(),name='aggiungi' ),
-    path('<int:idlibro>/', detail_view, name= 'libro'),
-    path('<int:idlibro>/update', update_view, name= 'aggiorna'),
-    path('<int:idlibro>/delete', delete_view, name='cancella'),
+    path('aggiungi/', LibriCreateView.as_view(),name = 'aggiungi' ),
+    path('<int:idlibro>/', LibriDetailView.as_view(), name = 'libro'),
+    path('<int:idlibro>/update', LibriUpdateView.as_view(), name = 'aggiorna'),
+    path('<int:idlibro>/delete', LibriDeleteView.as_view(), name ='cancella'),
     path('secret/search/', SearchListView.as_view(), name = 'cerca'),
-    path('<int:idlibro>/prenota', PrestitiCreateView.as_view(), name='prenota'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('<int:idlibro>/prenota', ApriPrestitiCreateView.as_view(), name = 'prenota'),
+    path('<int:idlibro>/disprenota', ChiudiPrestitiCreateView.as_view(), name = 'disprenota'),
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
