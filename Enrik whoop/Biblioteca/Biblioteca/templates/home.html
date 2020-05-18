@@ -1,0 +1,55 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+  <h2>Homepage</h2>
+  <p>Benvenuto alla Biblioteca Zuccante, 
+    {% if user.is_authenticated %}
+      
+      {{ user.username }}
+    
+    {% else %}
+      
+      visitor 
+    
+    {% endif %} 
+  </p>
+  
+  <!-- barra di ricerca -->
+  <nav class="navbar navbar-light bg-light">
+    <form  class="form-inline" method='GET' action="." style="margin: 0">
+      <input  class="form-control mr-sm-2" id="search_box" type="text" name="search_box"  placeholder="Search..." >
+      <button class="btn btn-outline-success my-2 my-sm-0" id="search_submit" type="submit" >Submit</button>
+    </form>
+  </nav>
+  <!-- lista dei libri -->
+  <ul class="list-group">
+    {% for libri in libri_list %}
+      <li class="list-group-item">
+        <a href="http://127.0.0.1:8000/{{libri.idlibro}}/" class="list-group-item list-group-item-action active">{{ libri.titolo }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+
+  {% if is_paginated %}
+
+    {% if page_obj.has_previous %}
+      <a class="btn btn-outline-primary mb-4" href="?page=1">First</a>
+      <a class="btn btn-outline-primary mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+        <a class="btn btn-primary mb-4" href="?page={{ num }}">{{ num }}</a>
+      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <a class="btn btn-outline-primary mb-4" href="?page={{ num }}">{{ num }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+      <a class="btn btn-outline-primary mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+      <a class="btn btn-outline-primary mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+    {% endif %}
+
+  {% endif %}
+
+{% endblock content %}
