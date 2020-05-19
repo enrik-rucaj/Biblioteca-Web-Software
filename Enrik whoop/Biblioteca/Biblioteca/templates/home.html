@@ -1,55 +1,255 @@
 {% extends 'base.html' %} 
 
 {% block content %}
-  <h2>Homepage</h2>
-  <p>Benvenuto alla Biblioteca Zuccante, 
-    {% if user.is_authenticated %}
-      
-      {{ user.username }}
+<main role="main"  style="padding-left: 10%; padding-right: 10%; padding-top: 5%; padding-bottom: 1%;">
+
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Biblioteca Zuccante</h1>
+      <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+      <p>
+        <a href="#" class="btn btn-dark mx-1 my-2">Categorie</a>
+        <a href="#" class="btn btn-dark mx-4 my-2">Libreria</a>
+        <a href="#" class="btn btn-dark mx-1 my-2">Ultimi aggiunti</a>
+      </p>
+    </div>  
+
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="inam" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12 col-lg-4">
+                      <div class="card" style="width: 300px;margin: auto;">                          
+                          <img class="card-img-top" src="https://m.media-amazon.com/images/I/41M6Vvg6AlL.jpg" alt="Card image cap">
+                          <div class="card-body">
+                          <h5 class="card-title">*titolo*</h5>
+                          <p class="card-text">Autore: *nome*<br>Genere: *</p>
+                          <a href="#" class="btn btn-primary">Dettagli</a>
+                          </div>  
+                      </div>
+                    </div>
+                    <div class="col-sm-12 col-lg-4">
+                        <div class="card" style="width: 300px;margin: auto;">
+                            <img class="card-img-top" src="https://static.lafeltrinelli.it/static/frontside/xxl/319/10037319_4398807.jpg" alt="Card image cap">
+                            <div class="card-body">
+                            <h5 class="card-title">*titolo*</h5>
+                            <p class="card-text">Autore: *nome*<br>Genere: *</p>
+                            <a href="#" class="btn btn-primary">Dettagli</a>
+                            </div>  
+                        </div>          
+                    </div>
+                    <div class="col-sm-12 col-lg-4">
+                      <div class="card" style="width: 300px;margin: auto;">
+                          <img class="card-img-top" src="https://www.ibs.it/mpimg/2560043059864_0_0_0_745_75.jpg" alt="Card image cap">
+                          <div class="card-body">
+                          <h5 class="card-title">*titolo*</h5>
+                          <p class="card-text">Autore: *nome*<br>Genere: *</p>
+                          <a href="#" class="btn btn-primary">Dettagli</a>
+                          </div>  
+                      </div>          
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12 col-lg-4">
+                      <div class="card" style="width: 300px;margin: auto;">
+                          <img class="card-img-top" src="https://www.unicusano.it/blog/wp-content/uploads/2018/02/cos-%C3%A8-un-algoritmo-640x360.jpg" alt="Card image cap">
+                          <div class="card-body">
+                          <h5 class="card-title">*titolo*</h5>
+                          <p class="card-text">Autore: *nome*<br>Genere: *</p>
+                          <a href="#" class="btn btn-primary">Dettagli</a>
+                          </div>  
+                      </div>          
+                    </div>
+                    <div class="col-sm-12 col-lg-4">
+                      <div class="card" style="width: 300px;margin: auto;">
+                          <img class="card-img-top" src="https://img.libraccio.it/images/9788804665229_0_500_0_75.jpg" alt="Card image cap">
+                          <div class="card-body">
+                          <h5 class="card-title">*titolo*</h5>
+                          <p class="card-text">Autore: *nome*<br>Genere: *</p>
+                          <a href="#" class="btn btn-primary">Dettagli</a>
+                          </div>  
+                      </div>          
+                    </div>
+                    <div class="col-sm-12 col-lg-4">
+                      <div class="card" style="width: 300px;margin: auto;">
+                          <img class="card-img-top" src="https://www.unicusano.it/blog/wp-content/uploads/2018/02/cos-%C3%A8-un-algoritmo-640x360.jpg" alt="Card image cap">
+                          <div class="card-body">
+                          <h5 class="card-title">*titolo*</h5>
+                          <p class="card-text">Autore: *nome*<br>Genere: *</p>
+                          <a href="#" class="btn btn-primary">Dettagli</a>
+                          </div>  
+                      </div>          
+                    </div>
+                  </div>
+                </div>  
+              </div>  
+              <div class="carousel-item">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12 col-lg-4">
+                      <div class="card" style="width: 300px;margin: auto;">
+                          <img class="card-img-top" src="https://www.unicusano.it/blog/wp-content/uploads/2018/02/cos-%C3%A8-un-algoritmo-640x360.jpg" alt="Card image cap">
+                          <div class="card-body">
+                          <h5 class="card-title">*titolo*</h5>
+                          <p class="card-text">Autore: *nome*<br>Genere: *</p>
+                          <a href="#" class="btn btn-primary">Dettagli</a>
+                          </div>  
+                      </div>          
+                    </div>
+                    <div class="col-sm-12 col-lg-4">
+                      <div class="card" style="width: 300px;margin: auto;">
+                          <img class="card-img-top" src="https://www.unicusano.it/blog/wp-content/uploads/2018/02/cos-%C3%A8-un-algoritmo-640x360.jpg" alt="Card image cap">
+                          <div class="card-body">
+                          <h5 class="card-title">*titolo*</h5>
+                          <p class="card-text">Autore: *nome*<br>Genere: *</p>
+                          <a href="#" class="btn btn-primary">Dettagli</a>
+                          </div>  
+                      </div>          
+                    </div>
+                    <div class="col-sm-12 col-lg-4">
+                      <div class="card" style="width: 300px;margin: auto;">
+                          <img class="card-img-top" src="https://m.media-amazon.com/images/I/51UfN1esvRL.jpg" alt="Card image cap">
+                          <div class="card-body">
+                          <h5 class="card-title">*titolo*</h5>
+                          <p class="card-text">Autore: *nome*<br>Genere: *</p>
+                          <a href="#" class="btn btn-primary">Dettagli</a>
+                          </div>  
+                      </div>          
+                    </div>
+                  </div>
+                </div>  
+              </div>              
+            </div>
+            <a href="#inam" class="carousel-control-prev" data-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a href="#inam" class="carousel-control-next" data-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </a>              
+          </div>           
+        </div>         
+      </div>       
+    </div>
+
     
-    {% else %}
-      
-      visitor 
-    
-    {% endif %} 
-  </p>
-  
-  <!-- barra di ricerca -->
-  <nav class="navbar navbar-light bg-light">
-    <form  class="form-inline" method='GET' action="." style="margin: 0">
-      <input  class="form-control mr-sm-2" id="search_box" type="text" name="search_box"  placeholder="Search..." >
-      <button class="btn btn-outline-success my-2 my-sm-0" id="search_submit" type="submit" >Submit</button>
-    </form>
-  </nav>
-  <!-- lista dei libri -->
-  <ul class="list-group">
-    {% for libri in libri_list %}
-      <li class="list-group-item">
-        <a href="http://127.0.0.1:8000/{{libri.idlibro}}/" class="list-group-item list-group-item-action active">{{ libri.titolo }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-
-  {% if is_paginated %}
-
-    {% if page_obj.has_previous %}
-      <a class="btn btn-outline-primary mb-4" href="?page=1">First</a>
-      <a class="btn btn-outline-primary mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-    {% endif %}
-
-    {% for num in page_obj.paginator.page_range %}
-      {% if page_obj.number == num %}
-        <a class="btn btn-primary mb-4" href="?page={{ num }}">{{ num }}</a>
-      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-        <a class="btn btn-outline-primary mb-4" href="?page={{ num }}">{{ num }}</a>
-      {% endif %}
-    {% endfor %}
-
-    {% if page_obj.has_next %}
-      <a class="btn btn-outline-primary mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-      <a class="btn btn-outline-primary mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-    {% endif %}
-
-  {% endif %}
+      <br>
+      <br>
+      <div class="container">      
+          <div class="card-deck">
+              <div class="card">
+                  <img class="card-img-top" src="https://www.unicusano.it/blog/wp-content/uploads/2018/02/cos-%C3%A8-un-algoritmo-640x360.jpg" alt="Card image cap">
+                  <div class="card-body">
+                  <h5 class="card-title">Informatica</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <a href="#" class="btn btn-primary">Sfoglia</a>
+                  </div>  
+              </div>
+              <div class="card">
+                  <img class="card-img-top" src="https://www.filosofiaamica.it/wp-content/uploads/filosofi-famosi-640x360.jpg" alt="Card image cap">
+                  <div class="card-body">
+                  <h5 class="card-title">Filosofia</h5>
+                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-primary">Sfoglia</a>
+                  </div>
+              </div>
+              <div class="card">
+                  <img class="card-img-top" src="https://www.laleggepertutti.it/wp-content/uploads/2019/09/religione-cristo-cattolicesimo-dio-gesu.jpg" alt="Card image cap">
+                  <div class="card-body">
+                  <h5 class="card-title">Religione</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                  <a href="#" class="btn btn-primary">Sfoglia</a>
+                  </div>
+              </div>
+          </div>   
+          <br>
+          <div class="card-deck">
+              <div class="card">
+                  <img class="card-img-top" src="https://www.29elode.it/sites/default/files/styles/course_page/public/o-law-facebook.jpg?itok=kIbn5XYA" alt="Card image cap">
+                  <div class="card-body">
+                  <h5 class="card-title">Scienze sociali</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <a href="#" class="btn btn-primary">Sfoglia</a>
+                  </div>
+              </div>
+              <div class="card">
+                  <img class="card-img-top" src="https://liceodonatelli.edu.it/wp-content/uploads/sites/238/foreign-languages-career-education-otions-after-12th.jpg" alt="Card image cap">
+                  <div class="card-body">
+                  <h5 class="card-title">Linguistica</h5>
+                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-primary">Sfoglia</a>
+                  </div>
+              </div>
+              <div class="card">
+                  <img class="card-img-top" src="https://static.frascatiscienza.it/wp-content/uploads/2017/08/esperimenti.jpg" alt="Card image cap">
+                  <div class="card-body">
+                  <h5 class="card-title">Scienze pure</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                  <a href="#" class="btn btn-primary">Sfoglia</a>
+                  </div>
+              </div>
+          </div>  
+          <br>
+          <div class="card-deck">
+              <div class="card">
+                  <img class="card-img-top" src="https://www.asproni.it/wp-content/uploads/2018/11/Liceo-delle-Scienze-Applicate.jpg" alt="Card image cap">
+                  <div class="card-body">
+                  <h5 class="card-title">Tecnologia</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <a href="#" class="btn btn-primary">Sfoglia</a>
+                  </div>
+              </div>
+              <div class="card">
+                  <img class="card-img-top" src="https://www.raicultura.it/cropgd/640x360/dl/img/2020/01/15/1579104462480_Cover_Arte_2.jpg" alt="Card image cap">
+                  <div class="card-body">
+                  <h5 class="card-title">Arti</h5>
+                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-primary">Sfoglia</a>
+                  </div>
+              </div>
+              <div class="card">
+                  <img class="card-img-top" src="https://i2.wp.com/www.teleradiopace.tv/wp-content/uploads/2016/11/libro-letteratura.jpg?fit=1200%2C675&w=640" alt="Card image cap">
+                  <div class="card-body">
+                  <h5 class="card-title">Letteratura</h5>
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                  <a href="#" class="btn btn-primary">Sfoglia</a>
+                  </div>
+              </div>
+          </div>  
+          <br>          
+            <div class="container" style="text-align: center;">
+              <div class="row">                  
+                      <div class="card h-100" style="width: 350px;  margin: auto;">
+                        <img class="card-img-top" src="https://www.rai.it/resizegd/640x-/dl/img/2020/04/22/1587549816608_sr1%20-%2050a%20giornata%20mondiale%20della%20terra%202048x1152.png" alt="Card image cap">
+                        <div class="card-body">
+                        <h5 class="card-title">Geografia</h5>
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        <a href="#" class="btn btn-primary">Sfoglia</a>
+                      </div>                  
+              </div>
+          </div>
+          <footer class="text-muted">
+            <div class="container">
+              <p class="float-right">
+                <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">
+                  <svg class="bi bi-arrow-up" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 3.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V4a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M7.646 2.646a.5.5 0 01.708 0l3 3a.5.5 0 01-.708.708L8 3.707 5.354 6.354a.5.5 0 11-.708-.708l3-3z" clip-rule="evenodd"/>
+                  </svg>
+                </a>
+              </p>
+            </div>
+          </footer>
+      </section>
+  </main>
 
 {% endblock content %}
