@@ -1,11 +1,16 @@
 {% extends 'base.html' %} 
 {% block content %}
-    <div class="main"> 
-        <form method="POST" enctype="multipart/form-data"> 
-            {% csrf_token %} 
-            {{ form.as_p }} 
-            <input type="submit" value="Update"> 
-        </form> 
-    
-    </div> 
+
+    <section class="jumbotron text-center">
+        <div class="main"> 
+            <form method="POST" enctype="multipart/form-data"> 
+                {% csrf_token %} 
+                {% load crispy_forms_tags %} 
+                {% crispy form %} 
+                <input type="submit" value="Update"> 
+            </form> 
+        
+        </div> 
+    </section>
+
 {% endblock %}
