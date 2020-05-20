@@ -1,5 +1,6 @@
 from django import forms 
 from .models import Libri, Prestiti, Utenti
+from django_select2 import forms as s2forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, HTML, Div
 
@@ -10,49 +11,6 @@ class LibriForm(forms.ModelForm):
 		helper = FormHelper()
 		helper.form_method = 'post'
 		helper.add_input(Submit('submit', 'Aggiungi libro'))
-		helper.add_layout(Layout(
-			'dewey',
-			'titolo',
-			'immagine',
-			'isbn',
-			HTML('''
-				<div style="padding-bottom: 20px;">
-					<p>Editore*</p>
-					<select name="list" id="list" style="width: 100%">
-						{% for item in form.idedi %}
-							<option value="{{ item.ideditore }}">{{ item }}</option>
-						{% endfor %}
-					</select>
-				</div>
-			'''),
-			'nedizione',
-			'annopubblicazione',
-			'prezzo',
-			'dataacquisto',
-			'descrizione',
-			'pagine',
-			HTML('''
-				<div style="padding-bottom: 20px;">
-					<p>Collocazione*</p>
-					<select name="list2" id="list2" style="width: 100%">
-						{% for item in form.idcollocazione %}
-							<option value="{{ item.collocazione }}">{{ item }}</option>
-						{% endfor %}
-					</select>
-				</div>
-			'''),
-			HTML('''
-				<div style="padding-bottom: 20px;">
-					<p>Sede*</p>
-					<select name="list3" id="list3" style="width: 100%">
-						{% for item in form.idsede %}
-							<option value="{{ item.idsede }}">{{ item }}</option>
-						{% endfor %}
-					</select>
-				</div>
-			'''),
-			'idstato',
-		))
 		return helper 
 	
 	class Meta: 
@@ -73,6 +31,14 @@ class LibriForm(forms.ModelForm):
 			'idsede',
 			'idstato',
 		]
+		widgets = {
+			'idedi': s2forms.Select2Widget,
+			'idcollocazione': s2forms.Select2Widget,
+			'idsede': s2forms.Select2Widget,
+#			'author': s2forms.ModelSelect2Widget(model=auth.get_user_model(),
+#												search_fields=['first_name__istartswith', 'last_name__icontains']),
+#			'attending': s2forms.ModelSelect2MultipleWidget …
+		}
 	
 class ApriPrestitiForm(forms.ModelForm):
 	idlibro = forms.ModelChoiceField(queryset = Libri.objects.all(), disabled = True)

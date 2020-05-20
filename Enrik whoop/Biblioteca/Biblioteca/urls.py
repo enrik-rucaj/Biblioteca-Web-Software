@@ -25,6 +25,7 @@ from libri.views import (LibriListView, LibriCreateView, LibriUpdateView, LibriD
 urlpatterns = [
     path('', HomeView.as_view(), name = 'home'),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('select2/', include('django_select2.urls')),
     path('secret/', LibriListView.as_view(), name = 'libri'),
     path('admin/', admin.site.urls),
     path('aggiungi/', LibriCreateView.as_view(),name = 'aggiungi' ),
