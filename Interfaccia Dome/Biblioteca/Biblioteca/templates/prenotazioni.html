@@ -1,16 +1,13 @@
 {% extends 'base.html' %} 
+
 {% block content %}
     <div class="main"> 
-        <!-- Create a Form -->
         <form method="POST"> 
-            <!-- Security token by Django -->
             {% csrf_token %} 
-    
-            <!-- form as paragraph -->
-            {{ form.as_p }} 
-    
+            {{ form1.as_p }}
+            {{ form2.idlibro }}
+            {{ form2.idutente }} 
             <input type="submit" value="Update"> 
         </form> 
-    
     </div> 
 {% endblock %}
