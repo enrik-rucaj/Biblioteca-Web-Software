@@ -99,10 +99,12 @@ class LibriDetailView(DetailView):
         idlibro = self.kwargs.get("idlibro")
         return get_object_or_404(Libri, idlibro = idlibro)
 
-class SearchListView(ListView):
+class HomeView(ListView):
     paginate_by = 25
     model = Libri
     template_name = 'home.html'
 
     def get_queryset(self):
         return Libri.objects.filter(titolo__icontains=self.request.GET.get("search_box", ""))
+
+

@@ -20,10 +20,10 @@ from django.conf.urls.static import static
 from Biblioteca import settings
 from libri.models import Editori
 from libri.views import (LibriListView, LibriCreateView, LibriUpdateView, LibriDeleteView, LibriDetailView, 
-                        SearchListView, ApriPrestitiCreateView, ChiudiPrestitiCreateView)
+                        HomeView, ApriPrestitiCreateView, ChiudiPrestitiCreateView)
 
 urlpatterns = [
-    path('', SearchListView.as_view(), name = 'home'),
+    path('', HomeView.as_view(), name = 'home'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('secret/', LibriListView.as_view(), name = 'libri'),
     path('admin/', admin.site.urls),
@@ -31,7 +31,7 @@ urlpatterns = [
     path('<int:idlibro>/', LibriDetailView.as_view(), name = 'libro'),
     path('<int:idlibro>/update', LibriUpdateView.as_view(), name = 'aggiorna'),
     path('<int:idlibro>/delete', LibriDeleteView.as_view(), name ='cancella'),
-    path('secret/search/', SearchListView.as_view(), name = 'cerca'),
+    path('secret/search/', HomeView.as_view(), name = 'cerca'),
     path('<int:idlibro>/prenota', ApriPrestitiCreateView.as_view(), name = 'prenota'),
     path('<int:idlibro>/disprenota', ChiudiPrestitiCreateView.as_view(), name = 'disprenota'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
