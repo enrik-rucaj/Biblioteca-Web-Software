@@ -134,14 +134,17 @@ class HomeView(ListView):
     paginate_by = 25
     model = Libri
     template_name = 'home.html'
-
     def get_queryset(self):
         return Libri.objects.filter(titolo__icontains=self.request.GET.get("Search", ""))
-
+    def get_context_data(self, **kwargs):
+         context = super(HomeView, self).get_context_data(**kwargs)
+         context['nuovi_arrivi'] = Libri.objects.order_by('-idlibro')[:9][::-1]
+         return context
 class InfoListView(ListView):
     paginate_by = 25
     model = Libri
     template_name = 'secret.html'
+    
     def get_queryset(self):
         return Libri.objects.annotate(
             part=Cast(Substr("dewey", 1,3), IntegerField())
