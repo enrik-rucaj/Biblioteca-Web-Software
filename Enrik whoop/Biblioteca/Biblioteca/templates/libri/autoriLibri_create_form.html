@@ -5,14 +5,14 @@
   <div class="container"  style="padding-left: 10%; padding-right: 10%; padding-top: 5%; padding-bottom: 1%;">
     <section class="jumbotron text-center">
       <div class="container">
-        <h1 class="jumbotron-heading">Aggiungi un nuovo libro alla Biblioteca</h1>
+        <h1 class="jumbotron-heading">Aggiungi un autore al libro</h1>
         <p class="lead text-muted">Tutti le voci contrassegnate dal carattere <strong>*</strong> sono obbligatorie</p>
       </div>
 
       <form method="post" enctype="multipart/form-data" novalidate>
         {% csrf_token %}
         {% crispy form %}
-        <a class="btn btn-danger" href="/" role="button" style="width: 95px;">Cancella </a>
+        <a class="btn btn-danger" href="/" role="button" style="width: 95px;">Esci </a>
       </form>
     </section>
   </div> 

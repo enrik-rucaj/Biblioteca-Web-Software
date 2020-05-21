@@ -5,8 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
-from .models import Libri, Autori, Editori, Prestiti, Utenti
-from .forms import LibriForm, ApriPrestitiForm, ChiudiPrestitiForm, LibroInPrestitoForm
+from .models import Libri, Autori, Editori, Prestiti, Utenti, Autorilibri
+from .forms import LibriForm, ApriPrestitiForm, ChiudiPrestitiForm, LibroInPrestitoForm, AutoriLibriForm
 
 # Create your views here.
 class ApriPrestitiCreateView(LoginRequiredMixin, CreateView):
@@ -63,8 +63,33 @@ class LibriCreateView(LoginRequiredMixin, CreateView):
     template_name = 'libri/libri_create_form.html'
 
     def get_success_url(self):
-        return reverse_lazy('libro', kwargs={'idlibro': Libri.objects.latest('idlibro').idlibro})
-    
+        return reverse_lazy('autoriLibri', kwargs={'idlibro': Libri.objects.latest('idlibro').idlibro})
+        #return reverse_lazy('libro', kwargs={'idlibro': Libri.objects.latest('idlibro').idlibro})
+
+class AutoriLibriCreateView(LoginRequiredMixin, CreateView):
+#    model = Autorilibri
+#    form_class = AutoriLibriForm
+#    template_name = 'libri/autoriLibri_create_form.html'
+
+    def get(self, request, *args, **kwargs):
+        obj = Libri.objects.get(idlibro = self.kwargs['idlibro'])
+        form1 = AutoriLibriForm(initial = {'idlibro': obj})
+        context = {'form': form1}
+        return render(request, 'libri/autoriLibri_create_form.html', context)
+
+    def post(self, request, *args, **kwargs):
+        obj = Libri.objects.get(idlibro = self.kwargs['idlibro'])
+        form1 = AutoriLibriForm(request.POST, initial = {'idlibro': obj})
+        if form1.is_valid():
+            book1 = form1.save()
+            book1.save()
+            return HttpResponseRedirect(reverse_lazy('autoriLibri', kwargs={'idlibro': self.kwargs['idlibro']}))
+        return render(request, 'libri/autoriLibri_create_form.html', {'form': form1})
+        #return HttpResponseRedirect(reverse_lazy('libro', kwargs={'idlibro': self.kwargs['idlibro']}))
+
+#    def get_success_url(self):
+#       return reverse_lazy('home')
+
 class LibriUpdateView(LoginRequiredMixin, UpdateView):
     model = Libri
     form_class = LibriForm

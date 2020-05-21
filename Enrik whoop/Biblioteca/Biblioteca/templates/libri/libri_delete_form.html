@@ -1,12 +1,19 @@
 {% extends 'base.html' %} 
+{% load crispy_forms_tags %}
 
 {% block content %}
-    <div class="main"> 
-        <form method="POST"> 
-            {% csrf_token %} 
-            Are you sure to delete this item ? 
-            <input type="submit" value="Yes" /> 
-            <a href="/">Cancel </a> 
-        </form> 
+    <div class="container"  style="padding-left: 10%; padding-right: 10%; padding-top: 5%; padding-bottom: 1%;">
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading">Sei sicuro di voler eliminare il libro?</h1>
+                <p class="lead text-muted">Una volta fatta la scelta non potrai più tornare indietro.</p>
+            </div>
+
+            <form method="POST"> 
+                {% csrf_token %} 
+                <input class="btn btn-danger" type="submit" value="Sì" /> 
+                <a class="btn btn-secondary" href="/" role="button">Cancella</a> 
+            </form> 
+        </section>
     </div> 
 {% endblock %}
