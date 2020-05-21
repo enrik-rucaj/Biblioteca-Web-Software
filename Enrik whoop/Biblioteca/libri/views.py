@@ -1,5 +1,7 @@
 from django.utils import timezone
 from django.urls import reverse_lazy
+from django.db.models import  IntegerField, Q 
+from django.db.models.functions import Cast, Substr
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -54,8 +56,12 @@ class ChiudiPrestitiCreateView(LoginRequiredMixin, UpdateView):
         return render(request, 'disprenotazioni.html', {'form1': form1, 'form2': form2})
 
 class LibriListView(LoginRequiredMixin, ListView):
-    queryset = Libri.objects.all()
+    #queryset = Libri.objects.all()
     paginate_by=25
+    def get_queryset(self):
+        # idAutori=Autori.objects.filter(cognomenome = self.request.GET.get("search_box", "")).values_list('idautore', flat=True)
+        # idlibro=Autorilibri.objects.filter(idautore = idAutori).values_list('idlibro', flat = True)
+        return Libri.objects.filter(Q(titolo__icontains=self.request.GET.get("search_box", ""))|Q(isbn__icontains = self.request.GET.get("search_box", "")))
 
 class LibriCreateView(LoginRequiredMixin, CreateView):
     model = Libri
@@ -130,6 +136,86 @@ class HomeView(ListView):
     template_name = 'home.html'
 
     def get_queryset(self):
-        return Libri.objects.filter(titolo__icontains=self.request.GET.get("search_box", ""))
+        return Libri.objects.filter(titolo__icontains=self.request.GET.get("Search", ""))
 
+class InfoListView(ListView):
+    paginate_by = 25
+    model = Libri
+    template_name = 'secret.html'
+    def get_queryset(self):
+        return Libri.objects.annotate(
+            part=Cast(Substr("dewey", 1,3), IntegerField())
+        ).filter(part__lte = 99)
 
+class FiloListView(ListView):
+    paginate_by = 25 
+    model = Libri
+    template_name = 'secret.html'
+    def get_queryset(self):
+        return Libri.objects.annotate(
+            part=Cast(Substr("dewey",1,3), IntegerField())
+        ).filter(Q(part__lte = 199 )& Q(part__gte= 100))
+class ReligioneListView(ListView):
+    paginate_by = 25
+    model = Libri
+    template_name = 'secret.html'
+    def get_queryset(self):
+        return Libri.objects.annotate(
+            part=Cast(Substr("dewey",1,3), IntegerField())
+        ).filter(Q(part__lte = 299 )& Q(part__gte= 200))
+class ScieSocListView(ListView):
+    paginate_by = 25 
+    model = Libri
+    template_name = 'secret.html'
+    def get_queryset(self):
+        return Libri.objects.annotate(
+            part=Cast(Substr("dewey",1,3), IntegerField())
+        ).filter(Q(part__lte = 399 )& Q(part__gte= 300))
+class LinguisticaListView(ListView):
+    paginate_by = 25
+    model = Libri 
+    template_name = 'secret.html'
+    def get_queryset(self):
+        return Libri.objects.annotate(
+            part=Cast(Substr("dewey",1,3), IntegerField())
+        ).filter(Q(part__lte = 499 )& Q(part__gte= 400))
+class ScienzePureListView(ListView):
+    paginate_by = 25
+    model = Libri 
+    template_name = 'secret.html'
+    def get_queryset(self):
+        return Libri.objects.annotate(
+            part=Cast(Substr("dewey",1,3), IntegerField())
+        ).filter(Q(part__lte = 599 )& Q(part__gte= 500))
+class TecnologiaListView(ListView):
+    paginate_by = 25
+    model = Libri 
+    template_name = 'secret.html'
+    def get_queryset(self):
+        return Libri.objects.annotate(
+            part=Cast(Substr("dewey",1,3), IntegerField())
+        ).filter(Q(part__lte = 699 )& Q(part__gte= 600))
+class ArtiListView(ListView):
+    paginate_by = 25
+    model = Libri 
+    template_name = 'secret.html'
+    def get_queryset(self):
+        return Libri.objects.annotate(
+            part=Cast(Substr("dewey",1,3), IntegerField())
+        ).filter(Q(part__lte = 799 )& Q(part__gte= 700))
+class LetteraturaListView(ListView):
+    paginate_by = 25
+    model = Libri 
+    template_name = 'secret.html'
+    def get_queryset(self):
+        return Libri.objects.annotate(
+            part=Cast(Substr("dewey",1,3), IntegerField())
+        ).filter(Q(part__lte = 899 )& Q(part__gte= 800))
+class GeoStoListView(ListView):
+    paginate_by = 25
+    model = Libri 
+    template_name = 'secret.html'
+    def get_queryset(self):
+        return Libri.objects.annotate(
+            part=Cast(Substr("dewey",1,3), IntegerField())
+        ).filter(Q(part__lte = 999 )& Q(part__gte= 900))
