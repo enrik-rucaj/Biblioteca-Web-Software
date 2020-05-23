@@ -84,7 +84,6 @@ class Libri(models.Model):
         verbose_name_plural="Libri"
         db_table = 'Libri'
 
-
 class Prestiti(models.Model):
     idprestito = models.AutoField(db_column='IdPrestito', primary_key=True)
     idlibro = models.ForeignKey('Libri', on_delete=models.CASCADE, db_column='IdLibro')

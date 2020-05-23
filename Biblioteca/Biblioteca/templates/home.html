@@ -31,160 +31,179 @@
       <div class="row">
         <div class="col-sm-12">
           <div id="inam" class="carousel slide" data-ride="carousel">
+            <h3 style="color: brown;"><strong>Ultimi 9 libri aggiunti</strong></h3>
             <div class="carousel-inner" role = "listbox">
 
               <div class="carousel-item active">
-                <li class="list-group-item" style="background-color: darkgray;">
-                  <div class="row" style="background-color: darkgray;">
-                    {% if nuovi_arrivi.0.immagine %}
-                      <img src="{{ nuovi_arrivi.0.immagine.url }}" alt="Avatar" style="border-radius: 50%; width: 200px; height: 320px;">  
-                    {% else %}
-                      <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="Avatar" style="border-radius: 50%; width: 200px; height: 320px;">
-                    {% endif %}
-                    <div class="column" style="padding-top: 10%; padding-left: 10%;">
-                        <h3>{{ nuovi_arrivi.0.titolo }}</h3>
-                        <p>{{ nuovi_arrivi.0.descrizione }}</p>
-                        <a class="btn btn-success" href="{% url 'libro' nuovi_arrivi.0.idlibro %}" role="button">Dettagli</a>
-                    </div>
-                  </div>
-                </li>
+                <table style="width: 100%;">
+                  <tr>
+                    <td style="text-align: center; width: 40%;">
+                      {% if nuovi_arrivi.8.immagine %}
+                        <img src="{{ nuovi_arrivi.8.immagine.url }}" alt="Avatar" style="border-radius: 25px; width: 200px; height: 320px;">  
+                      {% else %}
+                        <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="Avatar" style="border-radius: 25px; width: 200px; height: 320px;">
+                      {% endif %}
+                    </td>
+                    <td style="text-align: center;">
+                      <h3>{{ nuovi_arrivi.8.titolo }}</h3>
+                      <p>{{ nuovi_arrivi.8.descrizione }}</p>
+                      <a class="btn btn-success" href="{% url 'libro' nuovi_arrivi.8.idlibro %}" role="button">Dettagli</a>
+                    </td>
+                  </tr>
+                </table>
                 <br>
               </div>
                    
               <div class="carousel-item">
-                <li class="list-group-item" style="background-color: darkgray;">
-                  <div class="row" style="background-color: darkgray;">
-                    {% if nuovi_arrivi.1.immagine %}
-                      <img src="{{ nuovi_arrivi.1.immagine.url }}" alt="Avatar" style="border-radius: 50%; width: 200px; height: 320px;">  
-                    {% else %}
-                      <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="Avatar" style="border-radius: 50%; width: 200px; height: 320px;">
-                    {% endif %}
-                    <div class="column" style="padding-top: 10%; padding-left: 10%;">
-                        <h3>{{ nuovi_arrivi.1.titolo }}</h3>
-                        <p>{{ nuovi_arrivi.1.descrizione }}</p>
-                        <a class="btn btn-success" href="{% url 'libro' nuovi_arrivi.1.idlibro %}" role="button">Dettagli</a>
-                    </div>
-                  </div>
-                </li>
+                <table style="width: 100%;">
+                  <tr>
+                    <td style="text-align: center; width: 40%;">
+                      {% if nuovi_arrivi.7.immagine %}
+                        <img src="{{ nuovi_arrivi.7.immagine.url }}" alt="Avatar" style="border-radius: 25px; width: 200px; height: 320px;">  
+                      {% else %}
+                        <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="Avatar" style="border-radius: 25px; width: 200px; height: 320px;">
+                      {% endif %}
+                    </td>
+                    <td style="text-align: center;">
+                      <h3>{{ nuovi_arrivi.7.titolo }}</h3>
+                      <p>{{ nuovi_arrivi.7.descrizione }}</p>
+                      <a class="btn btn-success" href="{% url 'libro' nuovi_arrivi.7.idlibro %}" role="button">Dettagli</a>
+                    </td>
+                  </tr>
+                </table>
                 <br>
               </div>
               <div class="carousel-item">
-                <li class="list-group-item" style="background-color: darkgray;">
-                  <div class="row" style="background-color: darkgray;">
-                    {% if nuovi_arrivi.2.immagine %}
-                      <img src="{{ nuovi_arrivi.2.immagine.url }}" alt="Avatar" style="border-radius: 50%; width: 200px; height: 320px;">  
-                    {% else %}
-                      <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="Avatar" style="border-radius: 50%; width: 200px; height: 320px;">
-                    {% endif %}
-                    <div class="column" style="padding-top: 10%; padding-left: 10%;">
-                        <h3>{{ nuovi_arrivi.2.titolo }}</h3>
-                        <p>{{ nuovi_arrivi.2.descrizione }}</p>
-                        <a class="btn btn-success" href="{% url 'libro' nuovi_arrivi.2.idlibro %}" role="button">Dettagli</a>
-                    </div>
-                  </div>
-                </li>
+                <table style="width: 100%;">
+                  <tr>
+                    <td style="text-align: center; width: 40%;">
+                      {% if nuovi_arrivi.6.immagine %}
+                        <img src="{{ nuovi_arrivi.6.immagine.url }}" alt="Avatar" style="border-radius: 25px; width: 200px; height: 320px;">  
+                      {% else %}
+                        <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="Avatar" style="border-radius: 25px; width: 200px; height: 320px;">
+                      {% endif %}
+                    </td>
+                    <td style="text-align: center;">
+                      <h3>{{ nuovi_arrivi.6.titolo }}</h3>
+                      <p>{{ nuovi_arrivi.6.descrizione }}</p>
+                      <a class="btn btn-success" href="{% url 'libro' nuovi_arrivi.6.idlibro %}" role="button">Dettagli</a>
+                    </td>
+                  </tr>
+                </table>
                 <br>
               </div>
               <div class="carousel-item">
-                <li class="list-group-item" style="background-color: darkgray;">
-                  <div class="row" style="background-color: darkgray;">
-                    {% if nuovi_arrivi.3.immagine %}
-                      <img src="{{ nuovi_arrivi.3.immagine.url }}" alt="Avatar" style="border-radius: 50%; width: 200px; height: 320px;">  
-                    {% else %}
-                      <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="Avatar" style="border-radius: 50%; width: 200px; height: 320px;">
-                    {% endif %}
-                    <div class="column" style="padding-top: 10%; padding-left: 10%;">
-                        <h3>{{ nuovi_arrivi.3.titolo }}</h3>
-                        <p>{{ nuovi_arrivi.3.descrizione }}</p>
-                        <a class="btn btn-success" href="{% url 'libro' nuovi_arrivi.3.idlibro %}" role="button">Dettagli</a>
-                    </div>
-                  </div>
-                </li>
+                <table style="width: 100%;">
+                  <tr>
+                    <td style="text-align: center; width: 40%;">
+                      {% if nuovi_arrivi.5.immagine %}
+                        <img src="{{ nuovi_arrivi.5.immagine.url }}" alt="Avatar" style="border-radius: 25px; width: 200px; height: 320px;">  
+                      {% else %}
+                        <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="Avatar" style="border-radius: 25px; width: 200px; height: 320px;">
+                      {% endif %}
+                    </td>
+                    <td style="text-align: center;">
+                      <h3>{{ nuovi_arrivi.5.titolo }}</h3>
+                      <p>{{ nuovi_arrivi.5.descrizione }}</p>
+                      <a class="btn btn-success" href="{% url 'libro' nuovi_arrivi.5.idlibro %}" role="button">Dettagli</a>
+                    </td>
+                  </tr>
+                </table>
                 <br>
               </div>
               <div class="carousel-item">
-                <li class="list-group-item" style="background-color: darkgray;">
-                  <div class="row" style="background-color: darkgray;">
-                    {% if nuovi_arrivi.4.immagine %}
-                      <img src="{{ nuovi_arrivi.4.immagine.url }}" alt="Avatar" style="border-radius: 50%; width: 200px; height: 320px;">  
-                    {% else %}
-                      <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="Avatar" style="border-radius: 50%; width: 200px; height: 320px;">
-                    {% endif %}
-                    <div class="column" style="padding-top: 10%; padding-left: 10%;">
-                        <h3>{{ nuovi_arrivi.4.titolo }}</h3>
-                        <p>{{ nuovi_arrivi.4.descrizione }}</p>
-                        <a class="btn btn-success" href="{% url 'libro' nuovi_arrivi.4.idlibro %}" role="button">Dettagli</a>
-                    </div>
-                  </div>
-                </li>
+                <table style="width: 100%;">
+                  <tr>
+                    <td style="text-align: center; width: 40%;">
+                      {% if nuovi_arrivi.4.immagine %}
+                        <img src="{{ nuovi_arrivi.4.immagine.url }}" alt="Avatar" style="border-radius: 25px; width: 200px; height: 320px;">  
+                      {% else %}
+                        <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="Avatar" style="border-radius: 25px; width: 200px; height: 320px;">
+                      {% endif %}
+                    </td>
+                    <td style="text-align: center;">
+                      <h3>{{ nuovi_arrivi.4.titolo }}</h3>
+                      <p>{{ nuovi_arrivi.4.descrizione }}</p>
+                      <a class="btn btn-success" href="{% url 'libro' nuovi_arrivi.4.idlibro %}" role="button">Dettagli</a>
+                    </td>
+                  </tr>
+                </table>
                 <br>
               </div>
               <div class="carousel-item">
-                <li class="list-group-item" style="background-color: darkgray;">
-                  <div class="row" style="background-color: darkgray;">
-                    {% if nuovi_arrivi.5.immagine %}
-                      <img src="{{ nuovi_arrivi.5.immagine.url }}" alt="Avatar" style="border-radius: 50%; width: 200px; height: 320px;">  
-                    {% else %}
-                      <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="Avatar" style="border-radius: 50%; width: 200px; height: 320px;">
-                    {% endif %}
-                    <div class="column" style="padding-top: 10%; padding-left: 10%;">
-                        <h3>{{ nuovi_arrivi.5.titolo }}</h3>
-                        <p>{{ nuovi_arrivi.5.descrizione }}</p>
-                        <a class="btn btn-success" href="{% url 'libro' nuovi_arrivi.5.idlibro %}" role="button">Dettagli</a>
-                    </div>
-                  </div>
-                </li>
+                <table style="width: 100%;">
+                  <tr>
+                    <td style="text-align: center; width: 40%;">
+                      {% if nuovi_arrivi.3.immagine %}
+                        <img src="{{ nuovi_arrivi.3.immagine.url }}" alt="Avatar" style="border-radius: 25px; width: 200px; height: 320px;">  
+                      {% else %}
+                        <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="Avatar" style="border-radius: 25px; width: 200px; height: 320px;">
+                      {% endif %}
+                    </td>
+                    <td style="text-align: center;">
+                      <h3>{{ nuovi_arrivi.3.titolo }}</h3>
+                      <p>{{ nuovi_arrivi.3.descrizione }}</p>
+                      <a class="btn btn-success" href="{% url 'libro' nuovi_arrivi.3.idlibro %}" role="button">Dettagli</a>
+                    </td>
+                  </tr>
+                </table>
                 <br>
               </div>
               <div class="carousel-item">
-                <li class="list-group-item" style="background-color: darkgray;">
-                  <div class="row" style="background-color: darkgray;">
-                    {% if nuovi_arrivi.6.immagine %}
-                      <img src="{{ nuovi_arrivi.6.immagine.url }}" alt="Avatar" style="border-radius: 50%; width: 200px; height: 320px;">  
-                    {% else %}
-                      <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="Avatar" style="border-radius: 50%; width: 200px; height: 320px;">
-                    {% endif %}
-                    <div class="column" style="padding-top: 10%; padding-left: 10%;">
-                        <h3>{{ nuovi_arrivi.6.titolo }}</h3>
-                        <p>{{ nuovi_arrivi.6.descrizione }}</p>
-                        <a class="btn btn-success" href="{% url 'libro' nuovi_arrivi.6.idlibro %}" role="button">Dettagli</a>
-                    </div>
-                  </div>
-                </li>
+                <table style="width: 100%;">
+                  <tr>
+                    <td style="text-align: center; width: 40%;">
+                      {% if nuovi_arrivi.2.immagine %}
+                        <img src="{{ nuovi_arrivi.2.immagine.url }}" alt="Avatar" style="border-radius: 25px; width: 200px; height: 320px;">  
+                      {% else %}
+                        <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="Avatar" style="border-radius: 25px; width: 200px; height: 320px;">
+                      {% endif %}
+                    </td>
+                    <td style="text-align: center;">
+                      <h3>{{ nuovi_arrivi.2.titolo }}</h3>
+                      <p>{{ nuovi_arrivi.2.descrizione }}</p>
+                      <a class="btn btn-success" href="{% url 'libro' nuovi_arrivi.2.idlibro %}" role="button">Dettagli</a>
+                    </td>
+                  </tr>
+                </table>
                 <br>
               </div>
               <div class="carousel-item">
-                <li class="list-group-item" style="background-color: darkgray;">
-                  <div class="row" style="background-color: darkgray;">
-                    {% if nuovi_arrivi.7.immagine %}
-                      <img src="{{ nuovi_arrivi.7.immagine.url }}" alt="Avatar" style="border-radius: 50%; width: 200px; height: 320px;">  
-                    {% else %}
-                      <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="Avatar" style="border-radius: 50%; width: 200px; height: 320px;">
-                    {% endif %}
-                    <div class="column" style="padding-top: 10%; padding-left: 10%;">
-                        <h3>{{ nuovi_arrivi.7.titolo }}</h3>
-                        <p>{{ nuovi_arrivi.7.descrizione }}</p>
-                        <a class="btn btn-success" href="{% url 'libro' nuovi_arrivi.7.idlibro %}" role="button">Dettagli</a>
-                    </div>
-                  </div>
-                </li>
+                <table style="width: 100%;">
+                  <tr>
+                    <td style="text-align: center; width: 40%;">
+                      {% if nuovi_arrivi.1.immagine %}
+                        <img src="{{ nuovi_arrivi.1.immagine.url }}" alt="Avatar" style="border-radius: 25px; width: 200px; height: 320px;">  
+                      {% else %}
+                        <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="Avatar" style="border-radius: 25px; width: 200px; height: 320px;">
+                      {% endif %}
+                    </td>
+                    <td style="text-align: center;">
+                      <h3>{{ nuovi_arrivi.1.titolo }}</h3>
+                      <p>{{ nuovi_arrivi.1.descrizione }}</p>
+                      <a class="btn btn-success" href="{% url 'libro' nuovi_arrivi.1.idlibro %}" role="button">Dettagli</a>
+                    </td>
+                  </tr>
+                </table>
                 <br>
               </div>
               <div class="carousel-item">
-                <li class="list-group-item" style="background-color: darkgray;">
-                  <div class="row" style="background-color: darkgray;">
-                    {% if nuovi_arrivi.8.immagine %}
-                      <img src="{{ nuovi_arrivi.8.immagine.url }}" alt="Avatar" style="border-radius: 50%; width: 200px; height: 320px;">  
-                    {% else %}
-                      <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="Avatar" style="border-radius: 50%; width: 200px; height: 320px;">
-                    {% endif %}
-                    <div class="column" style="padding-top: 10%; padding-left: 10%;">
-                        <h3>{{ nuovi_arrivi.8.titolo }}</h3>
-                        <p>{{ nuovi_arrivi.8.descrizione }}</p>
-                        <a class="btn btn-success" href="{% url 'libro' nuovi_arrivi.8.idlibro %}" role="button">Dettagli</a>
-                    </div>
-                  </div>
-                </li>
+                <table style="width: 100%;">
+                  <tr>
+                    <td style="text-align: center; width: 40%;">
+                      {% if nuovi_arrivi.0.immagine %}
+                        <img src="{{ nuovi_arrivi.0.immagine.url }}" alt="Avatar" style="border-radius: 25px; width: 200px; height: 320px;">  
+                      {% else %}
+                        <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="Avatar" style="border-radius: 25px; width: 200px; height: 320px;">
+                      {% endif %}
+                    </td>
+                    <td style="text-align: center;">
+                      <h3>{{ nuovi_arrivi.0.titolo }}</h3>
+                      <p>{{ nuovi_arrivi.0.descrizione }}</p>
+                      <a class="btn btn-success" href="{% url 'libro' nuovi_arrivi.0.idlibro %}" role="button">Dettagli</a>
+                    </td>
+                  </tr>
+                </table>
                 <br>
               </div>
                           
@@ -215,21 +234,24 @@
         <div class="card">
           <img class="card-img-top" src="https://www.unicusano.it/blog/wp-content/uploads/2018/02/cos-%C3%A8-un-algoritmo-640x360.jpg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Informatica</h5>
+            <h5 class="card-title"><strong>Informatica</strong></h5>
+            <p>Ha per oggetto lo studio dei fondamenti teorici dell'informazione, della sua computazione a livello logico e delle tecniche pratiche per la sua implementazione e applicazione in sistemi elettronici automatizzati detti quindi sistemi informatici.</p>
             <a href="{% url 'info' %}" class="btn btn-primary">Sfoglia</a>
           </div>  
         </div>
         <div class="card">
           <img class="card-img-top" src="https://www.filosofiaamica.it/wp-content/uploads/filosofi-famosi-640x360.jpg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Filosofia</h5>
+            <h5 class="card-title"><strong>Filosofia</strong></h5>
+            <p>Un campo di studi che si pone domande e riflette sul mondo e sull'essere umano, indaga sul senso dell'essere e dell'esistenza umana, tenta di definire la natura e analizza le possibilità e i limiti della conoscenza.</p>
             <a href="{% url 'filo' %}" class="btn btn-primary">Sfoglia</a>
           </div>
         </div>
         <div class="card">
           <img class="card-img-top" src="https://www.laleggepertutti.it/wp-content/uploads/2019/09/religione-cristo-cattolicesimo-dio-gesu.jpg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Religione</h5>
+            <h5 class="card-title"><strong>Religione</strong></h5>
+            <p>Insieme di credenze che coinvolgono l'essere umano, o una comunità, nell'esperienza di ciò che viene considerato sacro, in modo speciale con la divinità, oppure l'insieme di contenuti che entrano a far parte di un determinato culto religioso.</p>
             <a href="{% url 'rel' %}" class="btn btn-primary">Sfoglia</a>
           </div>
         </div>
@@ -239,21 +261,31 @@
         <div class="card">
           <img class="card-img-top" src="https://www.29elode.it/sites/default/files/styles/course_page/public/o-law-facebook.jpg?itok=kIbn5XYA" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Scienze sociali</h5>
+            <h5 class="card-title"><strong>Scienze sociali</strong></h5>
+            <p>Discipline che studiano l'essere umano e la società, in particolare l'origine e lo sviluppo delle società umane, le istituzioni, le relazioni sociali e i fondamenti della vita sociale.</p>
             <a href="{% url 'ss' %}" class="btn btn-primary">Sfoglia</a>
           </div>
         </div>
         <div class="card">
           <img class="card-img-top" src="https://liceodonatelli.edu.it/wp-content/uploads/sites/238/foreign-languages-career-education-otions-after-12th.jpg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Linguistica</h5>
+            <h5 class="card-title"><strong>Linguistica</strong></h5>
+            <p>Studio scientifico del linguaggio e delle sue strutture.<br>
+              Essa include lo studio della grammatica, della fonetica, della morfologia, del lessico, della sintassi e della testualità.
+            </p>
             <a href="{% url 'ling' %}" class="btn btn-primary">Sfoglia</a>
           </div>
         </div>
         <div class="card">
           <img class="card-img-top" src="https://static.frascatiscienza.it/wp-content/uploads/2017/08/esperimenti.jpg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Scienze pure</h5>
+            <h5 class="card-title"><strong>Scienze pure</strong></h5>
+            <p>Studio di tutte le discipline scientifiche che <br>
+              rendono impiegabili i risultati <br>
+              della ricerca pura <br>
+              nello sviluppo di prodotti e <br>
+              servizi.
+            </p>
             <a href="{% url 'sp' %}" class="btn btn-primary">Sfoglia</a>
           </div>
         </div>
@@ -263,21 +295,29 @@
         <div class="card">
           <img class="card-img-top" src="https://www.asproni.it/wp-content/uploads/2018/11/Liceo-delle-Scienze-Applicate.jpg" alt="Card image cap">
           <div class="card-body">
-            <h5 class="card-title">Tecnologia</h5>
+            <h5 class="card-title"><strong>Tecnologia</strong></h5>
+            <p>Il sottogruppo delle pratiche umane concernenti il comportamento nei confronti della natura diretto alla produzione di beni. Per tecnica si può intendere l'applicazione delle conoscenze elaborate dalla scienza a scopi pratici.</p>
             <a href="{% url 'tech' %}" class="btn btn-primary">Sfoglia</a>
           </div>
         </div>
         <div class="card">
             <img class="card-img-top" src="https://www.raicultura.it/cropgd/640x360/dl/img/2020/01/15/1579104462480_Cover_Arte_2.jpg" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Arti</h5>
+              <h5 class="card-title"><strong>Arti</strong></h5>
+              <p>
+                Ogni attività umana che porta a forme di creatività e di espressione estetica, poggiando su <br>
+                accorgimenti tecnici, abilità innate o acquisite e norme comportamentali derivanti dallo studio e dall'esperienza.
+              </p>
               <a href="{% url 'art' %}" class="btn btn-primary">Sfoglia</a>
             </div>
         </div>
         <div class="card">
             <img class="card-img-top" src="https://i2.wp.com/www.teleradiopace.tv/wp-content/uploads/2016/11/libro-letteratura.jpg?fit=1200%2C675&w=640" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Letteratura</h5>
+              <h5 class="card-title"><strong>Letteratura</strong></h5>
+              <br>
+              <p>La letteratura di una certa lingua è l'insieme delle opere scritte e pervenute fino al presente.</p>
+              <br><br><br>
               <a href="{% url 'lett' %}" class="btn btn-primary">Sfoglia</a>
             </div>
         </div>
@@ -288,7 +328,8 @@
           <div class="card h-100" style="width: 350px;  margin: auto;">
             <img class="card-img-top" src="https://www.rai.it/resizegd/640x-/dl/img/2020/04/22/1587549816608_sr1%20-%2050a%20giornata%20mondiale%20della%20terra%202048x1152.png" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title">Geografia</h5>
+              <h5 class="card-title"><strong>Geografia</strong></h5>
+              <p>La scienza che ha per oggetto lo studio, la descrizione e la rappresentazione della Terra nella configurazione della sua superficie e nella estensione e distribuzione dei fenomeni fisici, biologici, umani che la interessano e che, interagendo tra loro, ne modificano continuamente l'aspetto.</p>
               <a href="{% url 'geosto' %}" class="btn btn-primary">Sfoglia</a>
             </div>                  
           </div>

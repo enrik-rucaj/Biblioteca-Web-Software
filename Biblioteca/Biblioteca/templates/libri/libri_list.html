@@ -1,10 +1,9 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
   <nav class="navbar navbar-light bg-light justify-content-between">
     <a class="navbar-brand">Trova libro</a>
     <form class="form-inline"> 
-    {% comment %} <form method='GET' action="." style="margin: 0"> {% endcomment %}
       <input class="form-control mr-sm-2" type="text" placeholder="Libro, autore, codice..." aria-label="Search" name="search_box">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
         <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -15,7 +14,7 @@
     </form>
   </nav>
 
-  <div class="container"  style="padding-left: 10%; padding-right: 10%; padding-top: 5%; padding-bottom: 1%;">
+  <main role="main"  style="padding-left: 10%; padding-right: 10%; padding-top: 5%; padding-bottom: 1%;">
     <section class="jumbotron text-center">
       
       <div class="container">
@@ -44,9 +43,9 @@
           <li class="list-group-item">
             <div class="row">
               {% if libri.immagine %}
-                <img src="{{ libri.immagine.url }}" style="width:15%;">  
+                <img src="{{ libri.immagine.url }}" style="border-radius: 25px; width:15%;">  
               {% else %}
-                <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="" style="width:15%;"> <!--il link è per quei libri senza copertina-->
+                <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="" style="border-radius: 25px; width:15%;"> <!--il link è per quei libri senza copertina-->
               {% endif %}
               <div class="col">
                 <div class="text-left">
@@ -95,7 +94,7 @@
                         <svg class="bi bi-check" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                           <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>
                         </svg>
-                        Chiudi Prenotazione
+                        Ritira Libro
                       </a>
                     {% else %}
                       <a class="btn btn-success" href="{% url 'prenota' libri.idlibro %}" role="button">
@@ -173,5 +172,5 @@
         </div>
       </footer>
     </section>   
-  </div> 
+  </main> 
 {% endblock content %}

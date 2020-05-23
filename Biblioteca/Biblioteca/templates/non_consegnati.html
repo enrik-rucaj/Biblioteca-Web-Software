@@ -1,0 +1,50 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<div class="container"  style="padding-left: 10%; padding-right: 10%; padding-top: 5%; padding-bottom: 1%;">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Lista di tutti i libri non ritirati</h1>
+            <a href="{% url 'home' %}" class="btn btn-danger mx-4 my-2">
+            <svg class="bi bi-book" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 018.5 2.5v11a.5.5 0 01-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 010 13.5v-11a.5.5 0 01.276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 01.22-.103 12.958 12.958 0 012.7-.869zM1 2.82v9.908c.846-.343 1.944-.672 3.074-.788 1.143-.118 2.387-.023 3.426.56V2.718c-1.063-.929-2.631-.956-4.09-.664A11.958 11.958 0 001 2.82z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 007.5 2.5v11a.5.5 0 00.854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0016 13.5v-11a.5.5 0 00-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 00-.799-.34 12.96 12.96 0 00-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0115 2.82z" clip-rule="evenodd"/>
+            </svg>
+            Torna alla Home
+            </a>
+        </div>  
+        <hr>
+
+        <ul class="list-group">
+            {% for item in data %}
+                {% if item.datarestituzione == None %}
+                        <li class="list-group-item">
+                            <div class="row">
+                                {% if item.idlibro.immagine %}
+                                <img src="{{ item.idlibro.immagine.url }}" style="border-radius: 25px; width:15%;">  
+                                {% else %}
+                                    <img src="https://unibooks.nz/media/zoo/images/placeholder-135-300x500_e5ffd609dfdf17e01ff18b5428d59fa6.png" alt="" style="border-radius: 25px; width:15%;"> <!--il link è per quei libri senza copertina-->
+                                {% endif %}
+                                <div class="col" style="text-align: left;">
+                                    <br><br>
+                                    <p><strong>Libro: </strong>{{ item.idlibro }}</p>
+                                    <p style="color: red;"><strong style="color: black;">Consegnato a: </strong>{{ item.idutente }}</p>
+                                </div>
+                                <div class="col" style="text-align: right;">
+                                    <br><br>
+                                    <a class="btn btn-success" href="{% url 'disprenota' item.idlibro.idlibro %}" role="button">
+                                        <svg class="bi bi-check" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                          <path fill-rule="evenodd" d="M13.854 3.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3.5-3.5a.5.5 0 11.708-.708L6.5 10.293l6.646-6.647a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                        Ritira Libro
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </section>
+  </div>
+{% endblock content %}

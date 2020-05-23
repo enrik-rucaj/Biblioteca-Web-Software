@@ -20,8 +20,11 @@ from django.conf.urls.static import static
 from Biblioteca import settings
 from libri.models import Editori
 from libri.views import (LibriListView, LibriCreateView, LibriUpdateView, LibriDeleteView, LibriDetailView, 
-                        HomeView, ApriPrestitiCreateView, ChiudiPrestitiCreateView, AutoriLibriCreateView, InfoListView, FiloListView, ReligioneListView, ScieSocListView,
-                         LinguisticaListView, ScienzePureListView, TecnologiaListView, ArtiListView, LetteraturaListView, GeoStoListView)
+                        HomeView, ApriPrestitiCreateView, ChiudiPrestitiCreateView, AutoriLibriCreateView,
+                        LibriNonConsegnatiView,
+                        InfoListView, FiloListView, ReligioneListView, ScieSocListView, LinguisticaListView, 
+                        ScienzePureListView, TecnologiaListView, ArtiListView, LetteraturaListView, 
+                        GeoStoListView)
 
 urlpatterns = [
     path('', HomeView.as_view(), name = 'home'),
@@ -33,10 +36,11 @@ urlpatterns = [
     path('<int:idlibro>/', LibriDetailView.as_view(), name = 'libro'),
     path('<int:idlibro>/update', LibriUpdateView.as_view(), name = 'aggiorna'),
     path('<int:idlibro>/delete', LibriDeleteView.as_view(), name ='cancella'),
-    path('secret/search/', HomeView.as_view(), name = 'cerca'),
     path('<int:idlibro>/prenota', ApriPrestitiCreateView.as_view(), name = 'prenota'),
     path('<int:idlibro>/disprenota', ChiudiPrestitiCreateView.as_view(), name = 'disprenota'),
     path('aggiungi/<int:idlibro>/autorelibro/', AutoriLibriCreateView.as_view(), name = 'autoriLibri'),
+    path('da_consegnare/', LibriNonConsegnatiView.as_view(), name = 'daConsegnare'),
+    
     path('informatica',InfoListView.as_view(), name = 'info'),
     path('filosofia', FiloListView.as_view(), name = 'filo'),
     path('religione', ReligioneListView.as_view(), name = 'rel'),
