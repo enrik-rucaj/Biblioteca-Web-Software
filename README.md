@@ -17,7 +17,7 @@ i file cambiati.
 
 #############################################################################################################################################
 
-Procedimento da fare per poter usare il progetto pubblicato da Jude.
+Procedimento da fare per poter usare il progetto pubblicato da Jude (pufu22).
 
 1) entrare nella webenv (ambiente virtuale)
 2) fare il comando --> **pip install django-crispy-forms**
