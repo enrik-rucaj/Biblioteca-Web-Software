@@ -25,10 +25,3 @@ Procedimento da fare per poter usare il progetto pubblicato da Jude.
     *  In Biblioteca copiare il contenuto di settings.py - urls.py     -       e copiare l'intera cartella templates/
     *  In libri copiare il contenuto di views.py - models.py
 4) runnare il server e vedere se tutto è a posto.
-
-#############################################################################################################################################
-
-Un'altra cosa è capire come fare più pagine perchè al momento la lista dei libri è tutta su una pagina
-Se non mi sveglio e non vi funziona mentite al prof, mentite spudoratamente, dite che siamo a buon punto. 
-IO CAPPELLAZZO LO SALTO(forse non lo so,boh,probabile che salto anche info)
-PAVAN M***A
