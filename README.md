@@ -1,6 +1,6 @@
 # Biblioteca
 
-Non siate pigri, i procedimenti da fare per farvi funzionare il programma.
+Procedimenti da fare per far funzionare il programma.
 
 1) creare la webenv (ambiente virtuale)
 2) creare un progetto chiamato Biblioteca (ricordate di attivare prima la webenv)
@@ -11,17 +11,3 @@ Non siate pigri, i procedimenti da fare per farvi funzionare il programma.
 6) eseguire i comandi --> **python .\manage.py makemigrations**  --> **python .\manage.py migrate**
 7) creare le credenziali per l'admin con --> **python .\manage.py createsuperuser**
 8) runnare il server e vedere se tutto è a posto.
-
-Fatti sti passaggi la prima volta avrete il vostro progetto e ogni volta che qualcuno di noi condividerà del materiale basterà sostituire soltanto
-i file cambiati.
-
-#############################################################################################################################################
-
-Procedimento da fare per poter usare il progetto pubblicato da Jude (pufu22).
-
-1) entrare nella webenv (ambiente virtuale)
-2) fare il comando --> **pip install django-crispy-forms**
-3) copiare il contenuto dei seguenti file: 
-    *  In Biblioteca copiare il contenuto di settings.py - urls.py     -       e copiare l'intera cartella templates/
-    *  In libri copiare il contenuto di views.py - models.py
-4) runnare il server e vedere se tutto è a posto.
